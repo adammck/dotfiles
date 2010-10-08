@@ -1,0 +1,27 @@
+# disable the splash screen
+# why is this not the default??
+startup_message off
+
+# disable annoying visual bell
+vbell off
+
+# scroll back a long way (^A Esc)
+defscrollback 6000
+
+
+# show hostname and window list in the status bar
+# -----------------------------------------------
+
+# %{.gk}  green on black
+# %H      hostname (in literal brackets)
+# ----
+# %{.wk}  white on black
+# %-w     windows BEFORE active
+# ----
+# %{.kw}  black on white
+# %n %t   current window number and title
+# ----
+# %{-}    undo last color
+# %+w     windows AFTER active
+
+hardstatus alwayslastline '%{gk}[ %H ]  %{wk}%-w%{kw}%n %t%{-}%+w'
