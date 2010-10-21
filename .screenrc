@@ -8,6 +8,9 @@ vbell off
 # scroll back a long way (^A Esc)
 defscrollback 6000
 
+# kill screen when terminal is closed
+autodetach off
+
 
 # show hostname and window list in the status bar
 # -----------------------------------------------
