@@ -20,11 +20,18 @@ shopt -s dotglob
 # adammck@host:~/dir
 PS1='\u@\h:\w$ '
 
+function git_branch {
+    b=$(git symbolic-ref HEAD 2>/dev/null)
+    b=${b##refs/heads/}
+    echo $b
+}
+
 # define git aliases.
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff --color'
 alias gds='gd --staged'
+alias gdo='gd origin/$(git_branch) $(git_branch)'
 alias gc='git commit -v'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
