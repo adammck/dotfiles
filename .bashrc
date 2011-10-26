@@ -47,3 +47,7 @@ fi
 
 # define other aliases.
 alias la='ls -la'
+
+# fix arrow keys in vim under osx.
+# i have no idea what the consequences of this are.
+TERM=linux
