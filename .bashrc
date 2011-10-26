@@ -36,6 +36,13 @@ alias gc='git commit -v'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
 
+# colorize ls output
+if [[ $OSTYPE == darwin* ]]; then
+  alias ls='ls -G'
+
+elif [[ $OSTYPE == linux* ]]; then
+  alias ls='ls --color=auto'
+fi
+
 # define other aliases.
-alias ls='ls --color=auto'
 alias la='ls -la'
