@@ -33,6 +33,7 @@ alias gd='git diff --color'
 alias gds='gd --staged'
 alias gdo='gd origin/$(git_branch) $(git_branch)'
 alias gc='git commit -v'
+alias gca='ga -A && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
 
