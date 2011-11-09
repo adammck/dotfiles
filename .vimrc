@@ -23,6 +23,9 @@ set hidden
 " always show the tab bar, even when not in use.
 set showtabline=2
 
+" enable the ruler (character position in the bottom right).
+set ruler
+
 " enable syntax highlighting.
 syntax on
 
