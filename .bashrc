@@ -32,7 +32,7 @@ function git_token {
 }
 
 function rvm_token {
-  if [[ -n $(which rvm-prompt) ]]; then
+  if [[ -n $(which rvm-prompt 2>/dev/null) ]]; then
     rvm-prompt v g
   fi
 }
