@@ -9,7 +9,7 @@ fi
 # don't log common commands.
 export HISTIGNORE="&:ls:la:exit"
 export HISTSIZE=10000
-shopt -s histappend                 
+shopt -s histappend
 
 # don't echo control characters.
 stty -echoctl
@@ -17,14 +17,48 @@ stty -echoctl
 # include dotfiles in globs.
 shopt -s dotglob
 
-# adammck@host:~/dir
-PS1='\u@\h:\w$ '
-
 function git_branch {
-    b=$(git symbolic-ref HEAD 2>/dev/null)
-    b=${b##refs/heads/}
-    echo $b
+  ref=$(git symbolic-ref HEAD 2>/dev/null)
+  echo ${ref##refs/heads/}
 }
+
+# define some color constants.
+LIGHT_GREY='\e[0;37m'
+DARK_GREY='\e[1;30m'
+RESET_COLORS='\e[0m'
+
+function git_token {
+  echo $(git_branch)
+}
+
+function rvm_token {
+  if [[ -n $(which rvm-prompt) ]]; then
+    rvm-prompt v g
+  fi
+}
+
+function venv_token {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    basename "$VIRTUAL_ENV"
+  fi
+}
+
+function prompt_tokens {
+  for name in "$@"; do
+    text=$($name"_token")
+
+    if [[ -n $text ]]; then
+      echo -n "[$name:$text] "
+    fi
+  done
+}
+
+# adammck@bender (git:master) (rvm:1.9.2@gemset)
+# ~/projects/whatever$
+PS1="\[$DARK_GREY\]"'\n\u@\h $(prompt_tokens git rvm venv)\n'"\[$LIGHT_GREY\]"'\w$ '"\[$RESET_COLORS\]"
+
+# disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # define git aliases.
 alias gs='git status'
