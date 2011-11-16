@@ -12,3 +12,8 @@ fi
 if [[ -s "$HOME/.bashrc" ]]; then
     source "$HOME/.bashrc"
 fi
+
+# show login banner.
+if [[ -s "$HOME/.banner" ]]; then
+    cat "$HOME/.banner"
+fi
