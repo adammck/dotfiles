@@ -22,11 +22,6 @@ function git_branch {
   echo ${ref##refs/heads/}
 }
 
-# define some color constants.
-LIGHT_GREY='\e[0;37m'
-DARK_GREY='\e[1;30m'
-RESET_COLORS='\e[0m'
-
 function git_token {
   echo $(git_branch)
 }
@@ -55,7 +50,7 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1="\[$DARK_GREY\]"'\n\u@\h $(prompt_tokens git rvm venv)\n'"\[$LIGHT_GREY\]"'\w$ '"\[$RESET_COLORS\]"
+PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rvm venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
