@@ -33,6 +33,24 @@ function rvm_token {
   fi
 }
 
+function rbenv_token {
+  if [[ -n $(which rbenv 2>/dev/null) ]]; then
+    version=$(rbenv version-name)
+
+    if [[ $version != "system" ]]; then
+      echo -n $version
+    fi
+  fi
+
+  if [[ -n $(which rbenv-gemset 2>/dev/null) ]]; then
+    gemset=$(rbenv-gemset active 2>/dev/null)
+
+    if [[ -n $gemset ]]; then
+      echo -n "@$gemset"
+    fi
+  fi
+}
+
 function venv_token {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     basename "$VIRTUAL_ENV"
@@ -51,7 +69,7 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rvm venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
+PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rvm rbenv venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
