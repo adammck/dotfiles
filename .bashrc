@@ -2,6 +2,7 @@
 [[ $- != *i* ]] && return
 
 # initialize RVM, if it is installed.
+# TODO: remove this once all machines are on rbenv.
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   source "$HOME/.rvm/scripts/rvm"
 fi
