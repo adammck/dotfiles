@@ -3,3 +3,4 @@
 *.chproj
 .rbenv-*
 .rvmrc
+.coverage
