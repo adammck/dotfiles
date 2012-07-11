@@ -5,6 +5,11 @@ if [[ -d "/usr/local/sbin" ]]; then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
+# initialize rbenv, if available.
+if [[ -n $(which rbenv 2>/dev/null) ]]; then
+  eval "$(rbenv init -)"
+fi
+
 # add my user bin to $PATH.
 if [[ -d "$HOME/bin" ]]; then
   export PATH="$HOME/bin:$PATH"
