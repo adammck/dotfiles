@@ -1,0 +1,17 @@
+# Start a Redis server in the foreground.
+alias start-redis="redis-server /usr/local/etc/redis.conf"
+
+# Start a MongoDB server in the foreground.
+alias start-mongo="mongod run --config /usr/local/etc/mongod.conf"
+
+# Launch a Terminal and Editor for a project.
+function proj {
+  if [[ -n $1 ]]; then
+    p=$HOME/projects/$1
+    open -a Terminal.app $p
+    subl $p
+
+  else
+    ls $HOME/projects
+  fi
+}
