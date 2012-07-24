@@ -18,6 +18,44 @@ stty -echoctl
 # include dotfiles in globs.
 shopt -s dotglob
 
+# ----------------------------------------------------------------- Yesterday --
+
+__today () {
+  date "+%Y/%m/%d"
+}
+
+__previous_weekday () {
+  wday=$(date "+%u")
+  [ $wday = 1 ] && o=3 || o=1
+  date -v -${o}d "+%Y/%m/%d"
+}
+
+__git_dirs () {
+  find $HOME/projects -type d -name .git
+}
+
+__yesterday_log () {
+  if [[ -n $(ls $1/refs/heads 2>/dev/null) ]]; then
+    repo_name=$(basename $(dirname $1))
+
+    git\
+      --git-dir=$1\
+    log\
+      --all\
+      --pretty="format:%C(yellow)%h%Creset %C(bold black)$repo_name%Creset %s"\
+      --author="$(git config --get user.name)"\
+      --since="$(__previous_weekday)" --until="$(__today)"
+  fi
+}
+
+yesterday () {
+  for git_dir in $(__git_dirs); do
+    __yesterday_log $git_dir
+  done
+}
+
+# ------------------------------------------------------------------------------
+
 function git_branch {
   ref=$(git symbolic-ref HEAD 2>/dev/null)
   echo ${ref##refs/heads/}
