@@ -1,3 +1,7 @@
 --ignore-dir=CACHE
 --type-add
 css=.scss
+--type-add
+ruby=.haml
+--type-add
+js=.coffee
