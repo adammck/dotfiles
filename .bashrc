@@ -20,6 +20,10 @@ shopt -s dotglob
 
 # ----------------------------------------------------------------- Yesterday --
 
+__midnight() {
+  echo "00:00:00"
+}
+
 __today () {
   date "+%Y/%m/%d"
 }
@@ -43,8 +47,8 @@ __yesterday_log () {
     log\
       --all\
       --pretty="format:%C(yellow)%h%Creset %C(bold black)$repo_name%Creset %s"\
-      --author="$(git config --get user.name)"\
-      --since="$(__previous_weekday)" --until="$(__today)"
+      --since="$(__previous_weekday) $(__midnight)" --until="$(__today) $(__midnight)"\
+      --author="$(git config --get user.name)"
   fi
 }
 
