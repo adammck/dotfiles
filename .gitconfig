@@ -3,3 +3,5 @@
 	email = adam.mckaig@gmail.com
 [push]
 	default = current
+[core]
+	excludesfile = ~/.gitignore
