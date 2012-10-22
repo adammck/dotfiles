@@ -32,3 +32,6 @@ syntax on
 " make tab competion act more like bash, showing matches.
 set wildmenu
 set wildmode=list:longest
+
+" wrap commit messages at 72 characters
+au FileType gitcommit set tw=72
