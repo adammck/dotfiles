@@ -145,10 +145,6 @@ fi
 alias la='ls -la'
 alias be='bundle exec'
 
-# fix arrow keys in vim under osx.
-# i have no idea what the consequences of this are.
-TERM=linux
-
 # include local config (if available) for aliases and hacks.
 if [[ -s "$HOME/.bashrc.local" ]]; then
   source "$HOME/.bashrc.local"
