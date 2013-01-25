@@ -5,6 +5,11 @@ if [[ -d "/usr/local/sbin" ]]; then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
+# Add the NPM (node package manager) bin to $PATH.
+if [[ -d "/usr/local/share/npm/bin" ]]; then
+  export PATH="/usr/local/share/npm/bin:$PATH"
+fi
+
 # initialize rbenv, if available.
 if [[ -n $(which rbenv 2>/dev/null) ]]; then
   eval "$(rbenv init -)"
