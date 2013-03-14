@@ -5,6 +5,9 @@ set modeline
 " disable word wrap.
 set nowrap
 
+" show incomplete commands as they're typed.
+set showcmd
+
 " disable the swap file (because it swamps my dropbox history).
 set noswapfile
 
@@ -13,12 +16,24 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" round indent/outdent to the nearest tabstop.
 set shiftround
-set noexpandtab
+
+" preserve current indent on new lines.
+" (not 'smart' indent, which rarely works.)
 set autoindent
 
 " get rid of vi compatible keys.
 set nocompatible
+
+" highlight all search matches
+" (use :noh to clear)
+set hlsearch
+
+" search case-insensitively,
+" unless the search is MixedCase.
+set ignorecase
+set smartcase
 
 " allow switching between buffers without saving them.
 set hidden
@@ -28,6 +43,10 @@ set showtabline=2
 
 " enable the ruler (character position in the bottom right).
 set ruler
+
+" show the ruler at column 80.
+set colorcolumn=80
+highlight ColorColumn ctermbg=233
 
 " enable syntax highlighting.
 syntax on
