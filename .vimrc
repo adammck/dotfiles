@@ -8,8 +8,11 @@ set nowrap
 " disable the swap file (because it swamps my dropbox history).
 set noswapfile
 
-" don't expand tabs into spaces.
-set shiftwidth=4
+" expand tabs into 2 spaces.
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 set shiftround
 set noexpandtab
 set autoindent
