@@ -26,10 +26,6 @@ set autoindent
 " get rid of vi compatible keys.
 set nocompatible
 
-" highlight all search matches
-" (use :noh to clear)
-set hlsearch
-
 " search case-insensitively,
 " unless the search is MixedCase.
 set ignorecase
