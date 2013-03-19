@@ -41,8 +41,11 @@ set showtabline=2
 set ruler
 
 " show the ruler at column 80.
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
+" (only works with vim >= 7.3)
+if exists('+colorcolumn')
+  set colorcolumn=80
+  highlight ColorColumn ctermbg=233
+end
 
 " enable syntax highlighting.
 syntax on
