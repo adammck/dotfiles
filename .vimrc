@@ -51,6 +51,10 @@ set showtabline=2
 " enable the ruler (character position in the bottom right).
 set ruler
 
+" make backspace work like most other apps.
+" (this is the same as backspace=2)
+set backspace=indent,eol,start
+
 " show the ruler at column 80.
 " (only works with vim >= 7.3)
 if exists('+colorcolumn')
