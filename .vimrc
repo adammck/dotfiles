@@ -1,3 +1,17 @@
+" get rid of vi compatible keys.
+set nocompatible
+
+" start pathogen, if it's available on this machine.
+" (see: https://github.com/tpope/vim-pathogen)
+let s:pathogen_path = expand($HOME . "/.vim/autoload/pathogen.vim")
+if filereadable(s:pathogen_path)
+  execute pathogen#infect()
+  execute pathogen#helptags()
+end
+
+" enable file type detection.
+filetype plugin on
+
 " look for modelines anywhere in the first five lines.
 set modelines=5
 set modeline
@@ -22,9 +36,6 @@ set shiftround
 " preserve current indent on new lines.
 " (not 'smart' indent, which rarely works.)
 set autoindent
-
-" get rid of vi compatible keys.
-set nocompatible
 
 " search case-insensitively,
 " unless the search is MixedCase.
