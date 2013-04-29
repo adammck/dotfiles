@@ -29,7 +29,7 @@ __previous_weekday () {
 }
 
 __git_dirs () {
-  find $HOME/projects -type d -name .git
+  find $HOME/projects -type d -name .git -maxdepth 2
 }
 
 __yesterday_log () {
