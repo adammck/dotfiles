@@ -55,10 +55,10 @@ set ruler
 " (this is the same as backspace=2)
 set backspace=indent,eol,start
 
-" show the ruler at column 80.
+" show the ruler at column 81.
 " (only works with vim >= 7.3)
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=81
   highlight ColorColumn ctermbg=233
 end
 
