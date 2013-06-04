@@ -4,6 +4,9 @@ alias start-redis="redis-server /usr/local/etc/redis.conf"
 # Start a MongoDB server in the foreground.
 alias start-mongo="mongod run --config /usr/local/etc/mongod.conf"
 
+# Start an Elasticsearch server in the foreground.
+alias start-elasticsearch="elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+
 # Launch a Terminal and Editor for a project.
 function proj {
   if [[ -n $1 ]]; then
