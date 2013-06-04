@@ -9,6 +9,11 @@ shopt -s histappend
 # don't echo control characters.
 stty -echoctl
 
+# Disable START/STOP output control. (The OSX terminal sends XON/XOFF for Ctrl+Q
+# and Ctrl+S (respectively), which is not only confusing and utterly useless,
+# but prevents Bash's forward history search (also Ctrl+S) from working.)
+stty -ixon -ixoff
+
 # include dotfiles in globs.
 shopt -s dotglob
 
