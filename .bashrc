@@ -70,7 +70,7 @@ function git_token {
 
 function rbenv_token {
   if [[ -n $(which rbenv 2>/dev/null) ]]; then
-    version=$(rbenv version-name)
+    version=$(rbenv version-name 2>/dev/null)
 
     if [[ $version != "system" ]]; then
       echo -n $version
