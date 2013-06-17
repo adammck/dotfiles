@@ -110,6 +110,11 @@ function hr {
   echo -en '\033[1;30m'"\n$div\n"'\033[0m'
 }
 
+# Generate a secure password.
+function pw {
+  pwgen -s -1 32
+}
+
 # define git aliases.
 alias gs='git status'
 alias ga='git add'
