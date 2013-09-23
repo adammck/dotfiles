@@ -1,6 +1,0 @@
-To convert a plist to XML:
-
-  plutil -convert xml1 filename.plist
-
-Do this before committing, to make diff/patch possible.
-OSX will convert it to binary the first time it's used.
