@@ -10,6 +10,11 @@ if [[ -d "/usr/local/share/npm/bin" ]]; then
   export PATH="/usr/local/share/npm/bin:$PATH"
 fi
 
+# Add the Postgres.app bin to $PATH
+if [[ -d "/Applications/Postgres.app/Contents/MacOS/bin" ]]; then
+  export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+fi
+
 # initialize rbenv, if available.
 if [[ -n $(which rbenv 2>/dev/null) ]]; then
   eval "$(rbenv init -)"
