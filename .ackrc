@@ -1,4 +1,7 @@
 --ignore-dir=CACHE
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=vendor
 --type-add
 css=.scss
 --type-add
