@@ -15,6 +15,11 @@ if [[ -d "/Applications/Postgres.app/Contents/MacOS/bin" ]]; then
   export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 fi
 
+# Add the Heroku Toolbelt bin to $PATH
+if [[ -d "/usr/local/heroku/bin:$PATH" ]]; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
+
 # initialize rbenv, if available.
 if [[ -n $(which rbenv 2>/dev/null) ]]; then
   eval "$(rbenv init -)"
