@@ -25,6 +25,11 @@ if [[ -n $(which rbenv 2>/dev/null) ]]; then
   eval "$(rbenv init -)"
 fi
 
+# initialize pyenv, if available.
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+fi
+
 # add my user bin to $PATH.
 if [[ -d "$HOME/bin" ]]; then
   export PATH="$HOME/bin:$PATH"

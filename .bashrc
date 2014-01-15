@@ -86,6 +86,16 @@ function rbenv_token {
   fi
 }
 
+function pyenv_token {
+  if [[ -n $(which pyenv 2>/dev/null) ]]; then
+    version=$(pyenv version-name 2>/dev/null)
+
+    if [[ $version != "system" ]]; then
+      echo -n $version
+    fi
+  fi
+}
+
 function venv_token {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     basename "$VIRTUAL_ENV"
@@ -97,14 +107,14 @@ function prompt_tokens {
     text=$($name"_token")
 
     if [[ -n $text ]]; then
-      echo -n "[$name:$text] "
+      echo -n "[$name $text] "
     fi
   done
 }
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rbenv venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
+PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rbenv pyenv venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
