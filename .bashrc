@@ -17,46 +17,6 @@ stty -ixon -ixoff
 # include dotfiles in globs.
 shopt -s dotglob
 
-# ----------------------------------------------------------------- Yesterday --
-
-__midnight() {
-  echo "00:00:00"
-}
-
-__today () {
-  date "+%Y/%m/%d"
-}
-
-__previous_weekday () {
-  wday=$(date "+%u")
-  [ $wday = 1 ] && o=3 || o=1
-  date -v -${o}d "+%Y/%m/%d"
-}
-
-__git_dirs () {
-  find $HOME/projects -type d -name .git
-}
-
-__yesterday_log () {
-  if [[ -n $(ls $1/refs/heads 2>/dev/null) ]]; then
-    repo_name=$(basename $(dirname $1))
-
-    git\
-      --git-dir=$1\
-    log\
-      --all\
-      --pretty="format:%C(yellow)%h%Creset %C(bold black)$repo_name%Creset %s"\
-      --since="$(__previous_weekday) $(__midnight)" --until="$(__today) $(__midnight)"\
-      --author="$(git config --get user.name)"
-  fi
-}
-
-yesterday () {
-  for git_dir in $(__git_dirs); do
-    __yesterday_log $git_dir
-  done
-}
-
 # ------------------------------------------------------------------------------
 
 function git_branch {
@@ -69,7 +29,7 @@ function git_token {
 }
 
 function rbenv_token {
-  if [[ -n $(which rbenv 2>/dev/null) ]]; then
+  if which rbenv > /dev/null; then
     version=$(rbenv version-name 2>/dev/null)
 
     if [[ $version != "system" ]]; then
@@ -87,7 +47,7 @@ function rbenv_token {
 }
 
 function pyenv_token {
-  if [[ -n $(which pyenv 2>/dev/null) ]]; then
+  if which pyenv > /dev/null; then
     version=$(pyenv version-name 2>/dev/null)
 
     if [[ $version != "system" ]]; then
@@ -119,6 +79,8 @@ PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rbenv pyenv venv)\n\[\e[0;37m\]\w$ 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# ------------------------------------------------------------------------------
+
 # print a horizontal rule, to make an obvious divider.
 function hr {
   div=$(seq -f "-" -s "" $(tput cols))
@@ -136,6 +98,11 @@ alias gca='ga && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
 
+# deletes all branches already merged into the current branch.
+function git_cleanup {
+  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+}
+
 # colorize ls output
 if [[ $OSTYPE == darwin* ]]; then
   alias ls='ls -G'
@@ -143,10 +110,6 @@ if [[ $OSTYPE == darwin* ]]; then
 elif [[ $OSTYPE == linux* ]]; then
   alias ls='ls --color=auto'
 fi
-
-# define other aliases.
-alias la='ls -la'
-alias be='bundle exec'
 
 # include local config (if available) for aliases and hacks.
 if [[ -s "$HOME/.bashrc.local" ]]; then
