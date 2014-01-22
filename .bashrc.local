@@ -1,34 +1,6 @@
 # Disable the idiotic Homebrew beer mug
 export HOMEBREW_NO_EMOJI=1
 
-# Set up the internal and external Bloomberg proxies
-export INTERNAL_PROXY="http://bproxy.cfe.bloomberg.com:80"
-export EXTERNAL_PROXY="http://proxy.bloomberg.com:80"
-alias ipxy="env HTTP_PROXY=$INTERNAL_PROXY http_proxy=$INTERNAL_PROXY https_proxy=$INTERNAL_PROXY ALL_PROXY=$INTERNAL_PROXY"
-alias epxy="env HTTP_PROXY=$EXTERNAL_PROXY http_proxy=$EXTERNAL_PROXY https_proxy=$EXTERNAL_PROXY ALL_PROXY=$EXTERNAL_PROXY"
-
-# Clone an external Git repo from inside the Bloomberg firewall
-# (Disable certificate verification because of the MITM'd github.com cert)
-alias bbclone="epxy GIT_SSL_NO_VERIFY=1 git clone"
-
-function sync-docs () {
-  cd $HOME/projects/docs
-  git commit --all --allow-empty-message --message=""
-  epxy git fetch &&
-  git rebase &&
-  epxy git push
-  cd -
-}
-
-function pathogen-install () {
-  path=$1
-  name=$(basename $path)
-  epxy git clone https://github.com/$path ~/.vim/bundle/$name
-}
-
-# Show git commits since the last code review.
-alias review="gl --reverse reviewed.."
-
 # Start an Elastic Search server in the foreground.
 alias start-elasticsearch="elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
 
