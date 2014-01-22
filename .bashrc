@@ -17,6 +17,13 @@ stty -ixon -ixoff
 # include dotfiles in globs.
 shopt -s dotglob
 
+# Source a file if it exists. Otherwise do nothing.
+try_source () {
+  if [ -f $1 ]; then
+    source $1
+  fi
+}
+
 # ------------------------------------------------------------------------------
 
 function git_branch {
@@ -116,7 +123,5 @@ elif [[ $OSTYPE == linux* ]]; then
   alias ls='ls --color=auto'
 fi
 
-# include local config (if available) for aliases and hacks.
-if [[ -s "$HOME/.bashrc.local" ]]; then
-  source "$HOME/.bashrc.local"
-fi
+# include host-specific config (if available) for aliases and hacks.
+try_source "$HOME/.bashrc.$(hostname)"
