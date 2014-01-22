@@ -123,5 +123,8 @@ elif [[ $OSTYPE == linux* ]]; then
   alias ls='ls --color=auto'
 fi
 
+# Disable the idiotic Homebrew beer mug
+export HOMEBREW_NO_EMOJI=1
+
 # include host-specific config (if available) for aliases and hacks.
 try_source "$HOME/.bashrc.$(hostname)"

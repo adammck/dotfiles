@@ -1,6 +1,3 @@
-# Disable the idiotic Homebrew beer mug
-export HOMEBREW_NO_EMOJI=1
-
 # Start an Elastic Search server in the foreground.
 alias start-elasticsearch="elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
 
