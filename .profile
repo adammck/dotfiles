@@ -1,27 +1,24 @@
 . "$HOME/.bashrc"
 
-# add the local (brew) sbin to $PATH.
-if [[ -d "/usr/local/sbin" ]]; then
-  export PATH="/usr/local/sbin:$PATH"
-fi
+add_path () {
+  if [ -d $1 ]; then
+    export PATH="$1:$PATH"
+  fi
+}
 
-# Add the NPM (node package manager) bin to $PATH.
-if [[ -d "/usr/local/share/npm/bin" ]]; then
-  export PATH="/usr/local/share/npm/bin:$PATH"
-fi
+add_path "/usr/local/share/npm/bin"
+add_path "/usr/local/heroku/bin"
+add_path "/Applications/Postgres.app/Contents/MacOS/bin"
 
-# initialize rbenv, if available.
-if [[ -n $(which rbenv 2>/dev/null) ]]; then
-  eval "$(rbenv init -)"
-fi
+# initialize rbenv and pyenv, if available
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# add my user bin to $PATH.
-if [[ -d "$HOME/bin" ]]; then
-  export PATH="$HOME/bin:$PATH"
-fi
+# Add ~/bin last, to prioritize it over other bins
+add_path "$HOME/bin"
 
-# show login banner, if one exists.
-# it's a handy place for machine-specific reminders.
+# show login banner, if one exists
+# it's a handy place for machine-specific reminders
 if [[ -s "$HOME/.banner" ]]; then
   cat "$HOME/.banner"
 fi
