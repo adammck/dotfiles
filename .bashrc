@@ -31,8 +31,12 @@ function git_branch {
   echo ${ref##refs/heads/}
 }
 
+function git_head {
+  git rev-parse --short HEAD 2>/dev/null
+}
+
 function git_token {
-  echo $(git_branch)
+  echo $(git_branch) $(git_head)
 }
 
 function rbenv_token {
