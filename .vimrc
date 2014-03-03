@@ -71,3 +71,6 @@ set wildmode=list:longest
 
 " wrap commit messages at 72 characters
 au FileType gitcommit set tw=72
+
+" highlight .md files as markdown
+au BufRead,BufNewFile *.md set filetype=markdown
