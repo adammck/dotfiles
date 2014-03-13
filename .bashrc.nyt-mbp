@@ -1,0 +1,10 @@
+# Start a mySQL server in the foreground.
+# The --gdb option allows ctrl+c to kill the process.
+alias start-mysql="mysqld --datadir=/usr/local/var/mysql55 --pid-file=/usr/local/var/mysql55/$(hostname).pid --gdb"
+
+# Start a Postgres server in the foreground.
+alias start-postgres="postgres -D /usr/local/var/postgres"
+
+# Open gems with Sublime Text
+# e.g. `bundle open rails`
+export BUNDLER_EDITOR=subl

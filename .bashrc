@@ -31,8 +31,12 @@ function git_branch {
   echo ${ref##refs/heads/}
 }
 
+function git_head {
+  git rev-parse --short HEAD 2>/dev/null
+}
+
 function git_token {
-  echo $(git_branch)
+  echo $(git_branch) $(git_head)
 }
 
 function rbenv_token {
@@ -106,7 +110,7 @@ alias gd='git diff --color'
 alias gds='gd --staged'
 alias gdo='gd origin/$(git_branch) $(git_branch)'
 alias gc='git commit -v'
-alias gca='ga && gc'
+alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
 
