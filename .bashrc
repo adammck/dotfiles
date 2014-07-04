@@ -40,7 +40,7 @@ function git_token {
 }
 
 function rbenv_token {
-  if which rbenv > /dev/null; then
+  if which rbenv >/dev/null 2>&1; then
     version=$(rbenv version-name 2>/dev/null)
 
     if [[ $version != "system" ]]; then
@@ -48,7 +48,7 @@ function rbenv_token {
     fi
   fi
 
-  if [[ -n $(which rbenv-gemset 2>/dev/null) ]]; then
+  if which rbenv-gemset >/dev/null 2>&1; then
     gemset=$(rbenv-gemset active 2>/dev/null)
 
     if [[ -n $gemset ]]; then
@@ -58,7 +58,7 @@ function rbenv_token {
 }
 
 function pyenv_token {
-  if which pyenv > /dev/null; then
+  if which pyenv >/dev/null 2>&1; then
     version=$(pyenv version-name 2>/dev/null)
 
     if [[ $version != "system" ]]; then

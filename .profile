@@ -11,8 +11,8 @@ add_path "/usr/local/heroku/bin"
 add_path "/Applications/Postgres.app/Contents/MacOS/bin"
 
 # initialize rbenv and pyenv, if available
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which rbenv >/dev/null 2>&1; then eval "$(rbenv init -)"; fi
+if which pyenv >/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
 # Add ~/bin last, to prioritize it over other bins
 add_path "$HOME/bin"
