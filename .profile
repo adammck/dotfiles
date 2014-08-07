@@ -22,3 +22,8 @@ add_path "$HOME/bin"
 if [[ -s "$HOME/.banner" ]]; then
   cat "$HOME/.banner"
 fi
+
+# set the go path
+if [ -d "$HOME/code/go" ]; then
+  export GOPATH="$HOME/code/go"
+fi
