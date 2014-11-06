@@ -43,7 +43,7 @@ function rbenv_token {
   if which rbenv >/dev/null 2>&1; then
     version=$(rbenv version-name 2>/dev/null)
 
-    if [[ $version != "system" ]]; then
+    if [ $version != "system" ]; then
       echo -n $version
     fi
   fi
@@ -61,7 +61,7 @@ function pyenv_token {
   if which pyenv >/dev/null 2>&1; then
     version=$(pyenv version-name 2>/dev/null)
 
-    if [[ $version != "system" ]]; then
+    if [ $version != "system" ]; then
       echo -n $version
     fi
   fi
