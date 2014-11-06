@@ -132,3 +132,9 @@ export HOMEBREW_NO_EMOJI=1
 
 # include host-specific config (if available) for aliases and hacks.
 try_source "$HOME/.bashrc.$(hostname)"
+
+# Initialize autojump, if installed (with Homebrew). This needs to be in here,
+# rather than in .profile, because it isn't inherited by nested shells.
+if [ -s "/usr/local/etc/autojump.sh" ]; then
+  . "/usr/local/etc/autojump.sh"
+fi
