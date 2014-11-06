@@ -19,11 +19,11 @@ add_path "$HOME/bin"
 
 # show login banner, if one exists
 # it's a handy place for machine-specific reminders
-if [[ -s "$HOME/.banner" ]]; then
+if [ -s "$HOME/.banner" ]; then
   cat "$HOME/.banner"
 fi
 
 # set the go path
-if [ -d "$HOME/code/go" ]; then
-  export GOPATH="$HOME/code/go"
+if [ -d "$HOME/code" ]; then
+  export GOPATH="$HOME/code"
 fi
