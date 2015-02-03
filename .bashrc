@@ -103,6 +103,17 @@ function pw {
   pwgen -s -1 32
 }
 
+# Search DuckDuckGo
+# The query is prefixed with a bang, to avoid having to escape it.
+function ddg {
+  if [ -n "$1" ]; then
+    escaped=$(echo \!$@ | perl -lpe 's/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg')
+    open "https://duckduckgo.com/?q=$escaped"
+  else
+    open "https://duckduckgo.com/bang.html"
+  fi
+}
+
 # define git aliases.
 alias gs='git status'
 alias ga='git add --all'
