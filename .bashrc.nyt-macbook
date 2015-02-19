@@ -1,0 +1,31 @@
+# Start a mySQL server in the foreground.
+# The --gdb option allows ctrl+c to kill the process.
+# The --max-allowed-packet setting dodges 'mysql server has gone away' errors
+# when importing large dumps. I don't know if this is MySQL's fault, but this
+# seems to work.
+alias start-mysql="mysqld --datadir=/usr/local/var/mysql --pid-file=/usr/local/var/mysql/$(hostname).pid --gdb --max-allowed-packet=64M"
+
+# Start a Postgres server in the foreground.
+alias start-postgres="postgres -D /usr/local/var/postgres"
+
+# Start an Elastic Search server in the foreground.
+alias start-elasticsearch="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+
+# Start a Redis server in the foreground.
+alias start-redis="redis-server /usr/local/etc/redis.conf"
+
+# Start a Memcache server in the foreground.
+alias start-memcache="/usr/local/opt/memcached/bin/memcached"
+
+# Open gems with Sublime Text
+# e.g. `bundle open rails`
+export BUNDLER_EDITOR=subl
+
+# Override the $GOPATH on this machine, because I'm trying a different directory
+# layout. Everything is in ~/code, whether or not it's a Go project. If this
+# works out, it should be moved to dotprofile.
+export GOPATH=$HOME/code
+
+# Add the Go libexec bin to the path, for `go doc` and `go vet`. I have no idea
+# why they're not in the usual place.
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
