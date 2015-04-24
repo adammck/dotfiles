@@ -124,6 +124,7 @@ alias gc='git commit -v'
 alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
+alias gpr='git pull --rebase'
 
 # deletes all branches already merged into the current branch.
 function git_cleanup {
