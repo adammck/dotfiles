@@ -1,11 +1,9 @@
 # To enable this globally, symlink it into $HOME and:
 # git config --global core.excludesfile ~/.gitignore
 
-.DS_Store
-Thumbs.db
-*.tmproj
-*.chproj
-.rbenv-*
-.rvmrc
-.coverage
 *.pyc
+.DS_Store
+.coverage
+.env
+.rbenv-vars
+Thumbs.db
