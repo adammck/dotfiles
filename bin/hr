@@ -1,0 +1,3 @@
+#!/bin/bash
+div=$(seq -f "-" -s "" $(tput cols))
+echo -en '\033[1;30m'"\n$div\n"'\033[0m'

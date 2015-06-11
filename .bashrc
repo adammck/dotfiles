@@ -92,12 +92,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # ------------------------------------------------------------------------------
 
-# print a horizontal rule, to make an obvious divider.
-function hr {
-  div=$(seq -f "-" -s "" $(tput cols))
-  echo -en '\033[1;30m'"\n$div\n"'\033[0m'
-}
-
 # Generate a secure password.
 function pw {
   pwgen -s -1 32
