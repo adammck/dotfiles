@@ -92,11 +92,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # ------------------------------------------------------------------------------
 
-# Generate a secure password.
-function pw {
-  pwgen -s -1 32
-}
-
 # Search DuckDuckGo
 # The query is prefixed with a bang, to avoid having to escape it.
 function ddg {
