@@ -17,6 +17,9 @@ alias start-redis="redis-server /usr/local/etc/redis.conf"
 # Start a Memcache server in the foreground.
 alias start-memcache="/usr/local/opt/memcached/bin/memcached"
 
+# Start an InfluxDB server in the foreground.
+alias start-influxdb="influxdb -config=/usr/local/etc/influxdb.conf"
+
 # Open gems with Sublime Text
 # e.g. `bundle open rails`
 export BUNDLER_EDITOR=subl
