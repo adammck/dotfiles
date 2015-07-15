@@ -7,3 +7,4 @@
 .env
 .rbenv-vars
 Thumbs.db
+vars.sh
