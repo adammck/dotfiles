@@ -1,0 +1,2 @@
+#!/bin/bash -ex
+sed -i "" $1d $HOME/.ssh/known_hosts
