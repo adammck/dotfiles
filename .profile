@@ -26,8 +26,3 @@ fi
 if [ -d "$HOME/code" ]; then
   export GOPATH="$HOME/code"
 fi
-
-# initialize boot2docker, if available
-if which boot2docker >/dev/null 2>&1; then
-  eval "`boot2docker shellinit`"
-fi
