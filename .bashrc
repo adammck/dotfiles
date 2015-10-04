@@ -113,7 +113,7 @@ alias gc='git commit -v'
 alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
-alias gpr='git pull --rebase'
+alias gpr='git pull --rebase origin $(git_branch)'
 alias gb='git checkout -b'
 
 # deletes all branches already merged into the current branch.
