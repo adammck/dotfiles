@@ -8,7 +8,6 @@ add_path () {
 
 add_path "/usr/local/share/npm/bin"
 add_path "/usr/local/heroku/bin"
-add_path "/Applications/Postgres.app/Contents/MacOS/bin"
 
 # initialize rbenv and pyenv, if available
 if which rbenv >/dev/null 2>&1; then eval "`rbenv init -`"; fi
