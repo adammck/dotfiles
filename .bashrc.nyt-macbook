@@ -20,6 +20,9 @@ alias start-memcache="/usr/local/opt/memcached/bin/memcached"
 # Start an InfluxDB server in the foreground.
 alias start-influxdb="influxdb -config=/usr/local/etc/influxdb.conf"
 
+# Start a StatsD server in the foreground.
+alias start-statsd="echo '{ \"dumpMessages\": true }' > /tmp/statsd.js && statsd /tmp/statsd.js || rm /tmp/statsd.js"
+
 # Open gems with Sublime Text
 # e.g. `bundle open rails`
 export BUNDLER_EDITOR=subl
