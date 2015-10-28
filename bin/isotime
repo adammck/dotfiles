@@ -1,2 +1,16 @@
 #!/bin/sh
-date -u +"%Y-%m-%dT%H:%M:%SZ"
+
+case $# in
+  "1")
+    date -r $1 -u +"%Y-%m-%dT%H:%M:%SZ"
+    ;;
+
+  "0")
+    $0 `date +%s`
+    ;;
+
+  *)
+    echo "Usage: $0 [timestamp]"
+    exit 1
+    ;;
+esac
