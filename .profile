@@ -9,7 +9,7 @@ add_path () {
 add_path "/usr/local/share/npm/bin"
 add_path "/usr/local/heroku/bin"
 
-# initialize rbenv and pyenv, if available
+# Initialize rbenv and pyenv, if available
 if which rbenv >/dev/null 2>&1; then eval "`rbenv init -`"; fi
 if which pyenv >/dev/null 2>&1; then eval "`pyenv init -`"; fi
 
@@ -26,13 +26,13 @@ fi
 # Add ~/bin last, to prioritize it over other bins
 add_path "$HOME/bin"
 
-# show login banner, if one exists
-# it's a handy place for machine-specific reminders
-if [ -s "$HOME/.banner" ]; then
-  cat "$HOME/.banner"
+# Initialize the Google Cloud SDK, if available
+if [ -d "$HOME/.google/google-cloud-sdk" ]; then
+  source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
+  source "$HOME/.google/google-cloud-sdk/path.bash.inc"
 fi
 
-# set the go path
-if [ -d "$HOME/code" ]; then
-  export GOPATH="$HOME/code"
+# Show login banner, if one exists
+if [ -s "$HOME/.banner" ]; then
+  cat "$HOME/.banner"
 fi
