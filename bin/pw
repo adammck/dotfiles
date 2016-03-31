@@ -1,0 +1,2 @@
+#!/bin/sh
+pwgen -s -1 32
