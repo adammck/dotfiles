@@ -122,12 +122,7 @@ function git_cleanup {
 }
 
 # colorize ls output
-if [[ $OSTYPE == darwin* ]]; then
-  alias ls='ls -G'
-
-elif [[ $OSTYPE == linux* ]]; then
-  alias ls='ls --color=auto'
-fi
+export CLICOLOR=1
 
 # Disable the idiotic Homebrew beer mug
 export HOMEBREW_NO_EMOJI=1
