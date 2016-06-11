@@ -1,2 +1,14 @@
-#!/bin/sh
-curl https://github.com/$@.keys
+#!/bin/bash
+set -euo pipefail
+
+case $# in
+  "1")
+    set -x
+    curl https://github.com/$1.keys
+    ;;
+
+  *)
+    echo "Usage: $0 [username]"
+    exit 1
+    ;;
+esac

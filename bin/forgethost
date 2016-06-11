@@ -1,2 +1,14 @@
-#!/bin/bash -ex
-sed -i "" $1d $HOME/.ssh/known_hosts
+#!/bin/bash
+set -euo pipefail
+
+case $# in
+  "1")
+    set -x
+    sed -i "" $1d $HOME/.ssh/known_hosts
+    ;;
+
+  *)
+    echo "Usage: $0 [line]"
+    exit 1
+    ;;
+esac
