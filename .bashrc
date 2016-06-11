@@ -39,40 +39,6 @@ function git_token {
   echo $(git_branch) $(git_head)
 }
 
-function rbenv_token {
-  if which rbenv >/dev/null 2>&1; then
-    version=$(rbenv version-name 2>/dev/null)
-
-    if [ "$version" != "system" ]; then
-      echo -n $version
-    fi
-  fi
-
-  if which rbenv-gemset >/dev/null 2>&1; then
-    gemset=$(rbenv-gemset active 2>/dev/null)
-
-    if [[ -n $gemset ]]; then
-      echo -n "@$gemset"
-    fi
-  fi
-}
-
-function pyenv_token {
-  if which pyenv >/dev/null 2>&1; then
-    version=$(pyenv version-name 2>/dev/null)
-
-    if [ "$version" != "system" ]; then
-      echo -n $version
-    fi
-  fi
-}
-
-function venv_token {
-  if [[ -n "$VIRTUAL_ENV" ]]; then
-    basename "$VIRTUAL_ENV"
-  fi
-}
-
 function prompt_tokens {
   for name in "$@"; do
     text=$($name"_token")
@@ -85,10 +51,7 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git rbenv pyenv venv)\n\[\e[0;37m\]\w$ \[\e[0m\]'
-
-# disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git)\n\[\e[0;37m\]\w$ \[\e[0m\]'
 
 # ------------------------------------------------------------------------------
 
