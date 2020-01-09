@@ -39,6 +39,20 @@ function git_token {
   echo $(git_branch) $(git_head)
 }
 
+function venv_token {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    local n=$(basename "$VIRTUAL_ENV")
+
+    # If the virtualenv is in a dir called 'venv', that's not very useful to
+    # display, so use the parent directory instead.
+    if [[ "$n" == "venv" ]]; then
+      n=$(basename $(dirname "$VIRTUAL_ENV"))
+    fi
+
+    echo $n
+  fi
+}
+
 function prompt_tokens {
   for name in "$@"; do
     text=$($name"_token")
@@ -51,7 +65,10 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\[\e[1;30m\]\n\u@\h $(prompt_tokens git)\n\[\e[0;37m\]\w$ \[\e[0m\]'
+PS1='\n\u@\h $(prompt_tokens git venv)\n\w$ '
+
+# disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # ------------------------------------------------------------------------------
 
