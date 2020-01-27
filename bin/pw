@@ -1,2 +1,18 @@
 #!/bin/sh
-pwgen -s -1 32
+
+case $# in
+  "1")
+    # explicit pw len
+    pwgen -s -1 $1
+    ;;
+
+  "0")
+    # recurse with default pw len
+    $0 32
+    ;;
+
+  *)
+    echo "Usage: `basename $0` [length]"
+    exit 1
+    ;;
+esac
