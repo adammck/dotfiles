@@ -3,6 +3,7 @@
 --ignore-dir=log
 --ignore-dir=vendor
 --ignore-dir=coverage
+--ignore-dir=.mypy_cache
 --type-add
 css=.scss
 --type-add
