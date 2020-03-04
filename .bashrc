@@ -53,6 +53,15 @@ function venv_token {
   fi
 }
 
+function aws_okta_token {
+  if [[ -n "$AWS_OKTA_PROFILE" ]]; then
+    echo -ne "\033[41m" # bg=red
+    echo -ne "\033[97m" # fg=white
+    echo -n "$AWS_OKTA_PROFILE"
+    echo -ne "\033[0m" # reset
+  fi
+}
+
 function prompt_tokens {
   for name in "$@"; do
     text=$($name"_token")
@@ -65,7 +74,7 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\n\u@\h $(prompt_tokens git venv)\n\w$ '
+PS1='\n\u@\h $(prompt_tokens git venv aws_okta)\n\w$ '
 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
