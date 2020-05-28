@@ -3,7 +3,7 @@
 case $# in
   "1")
     # explicit pw len
-    pwgen -s -1 $1
+    pwgen -s -1 "$1"
     ;;
 
   "0")
@@ -12,7 +12,7 @@ case $# in
     ;;
 
   *)
-    echo "Usage: `basename $0` [length]"
+    echo "Usage: $(basename "$0") [length]"
     exit 1
     ;;
 esac

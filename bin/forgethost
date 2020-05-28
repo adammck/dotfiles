@@ -4,7 +4,7 @@ set -euo pipefail
 case $# in
   "1")
     set -x
-    sed -i "" $1d $HOME/.ssh/known_hosts
+    sed -i "" "$1d" "$HOME"/.ssh/known_hosts
     ;;
 
   *)

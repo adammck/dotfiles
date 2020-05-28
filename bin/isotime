@@ -4,12 +4,12 @@ set -euo pipefail
 case $# in
   "1")
     set -x
-    date -r $1 -u +"%Y-%m-%dT%H:%M:%SZ"
+    date -r "$1" -u +"%Y-%m-%dT%H:%M:%SZ"
     ;;
 
   "0")
     set -x
-    $0 `date +%s`
+    $0 "$(date +%s)"
     ;;
 
   *)

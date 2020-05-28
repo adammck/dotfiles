@@ -1,2 +1,2 @@
 #!/bin/sh
-pw | tr [a-z] [A-Z]
+pw "$@" | tr "[:lower:]" "[:upper:]"

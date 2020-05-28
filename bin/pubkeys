@@ -4,7 +4,7 @@ set -euo pipefail
 case $# in
   "1")
     set -x
-    curl https://github.com/$1.keys
+    curl https://github.com/"$1".keys
     ;;
 
   *)
