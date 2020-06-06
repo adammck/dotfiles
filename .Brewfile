@@ -60,3 +60,4 @@ brew "osx-cross/arm/arm-gcc-bin"
 # Added after May 2020
 cask "1password-cli"
 brew "shellcheck"
+brew "youtube-dl"
