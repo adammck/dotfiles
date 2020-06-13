@@ -29,7 +29,6 @@ brew "libksba"
 brew "mercurial"
 brew "minicom"
 brew "mysql"
-brew "open-ocd"
 brew "optipng"
 brew "packer"
 brew "pandoc"
@@ -45,7 +44,6 @@ brew "terraform"
 brew "terraform-inventory"
 brew "tidy-html5"
 brew "tmux"
-brew "tup"
 brew "wget"
 cask "qlstephen"
 
@@ -53,9 +51,14 @@ cask "qlstephen"
 tap "keith/formulae"
 brew "keith/formulae/reminders-cli"
 
-# To build stuff for ARM boards (incl. ODrive)
-tap "osx-cross/arm"
-brew "osx-cross/arm/arm-gcc-bin"
+# To build ODrive images
+#tap "osx-cross/arm"
+#brew "osx-cross/arm/arm-gcc-bin"
+tap "armmbed/formulae"
+brew "armmbed/formulae/arm-none-eabi-gcc"
+cask "osxfuse"
+brew "tup"
+brew "open-ocd"
 
 # Added after May 2020
 cask "1password-cli"
