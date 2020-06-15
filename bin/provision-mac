@@ -1,0 +1,67 @@
+#!/bin/sh
+
+if [ ! -f /usr/local/bin/brew ]; then
+  echo "Homebrew is not installed."
+  printf "Install Homebrew? (Y/N) "
+  read -r response
+  if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+    # command from: https://brew.sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
+fi
+
+# Install my dotfiles
+# Note that this script is stored *in* my dotfiles, so needs to be curled from
+# GitHub on first run, then deleted (to stay up to date)
+if [ ! -d "$HOME"/.dotfiles ]; then
+  printf "Clone dotfiles? (Y/N) "
+  read -r response
+  if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+    cd "$HOME" || exit 1
+    git clone https://github.com/adammck/dotfiles.git .dotfiles
+    ls -1AF .dotfiles | grep -v /$ | grep -Fv README.md | xargs -I{} -n1 ln -sf .dotfiles/{} .
+    cd - || exit 1
+  fi
+fi
+
+# Install my brews, and cleanup unmanaged brews
+# These are stored in `~/.Brewfile`, which is a symlink into `.dotfiles`.
+# TODO: Move App Store installs to this thing.
+printf "Run Homebrew? (Y/N) "
+read -r response
+if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+  brew bundle --global install
+  brew bundle --global cleanup --force
+fi
+
+printf "Configure MacOS defaults? (Y/N) "
+read -r response
+if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+
+  # Quit System Preferences first
+  osascript -e 'tell application "System Preferences" to quit'
+
+  # Show hidden files in Finder
+  defaults write com.apple.finder AppleShowAllFiles TRUE
+
+  # Show all filename extensions
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+  # Keep folders on top when sorting by name
+  defaults write com.apple.finder _FXSortFoldersFirst -bool true
+  defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
+
+  # Use column view in all Finder windows by default
+  # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `glyv`
+  defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+  # Restart Finder to apply settings
+  # TODO: Is this still necessary?
+  if [ -t 0  ] || [ -p /dev/stdin ]; then
+    printf "Restart Finder, to apply defaults? (Y/N) "
+    read -r response
+    if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+       killall Finder
+    fi
+  fi
+fi
