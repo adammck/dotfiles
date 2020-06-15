@@ -5,6 +5,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "homebrew/cask-fonts"
 
 # Dumped from iMac in May 2020.
 # TODO: Organize and remove stuff no longer needed.
@@ -52,8 +53,6 @@ tap "keith/formulae"
 brew "keith/formulae/reminders-cli"
 
 # To build ODrive images
-#tap "osx-cross/arm"
-#brew "osx-cross/arm/arm-gcc-bin"
 tap "armmbed/formulae"
 brew "armmbed/formulae/arm-none-eabi-gcc"
 cask "osxfuse"
@@ -64,3 +63,19 @@ brew "open-ocd"
 cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
+
+# Set up settings Sync after installing Sublime Text:
+# TODO: Do this before installing Sublime, in bin/provision-mac
+#
+#   cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+#   rm -rf User
+#   ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Sync/Sublime\ Text/User
+# 
+cask "sublime-text"
+
+# Set up settings Sync after installing Alfred!
+# TODO: How to do this from the command prompt?
+cask "alfred"
+
+# Fonts
+cask "font-source-code-pro"
