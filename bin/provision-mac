@@ -34,6 +34,19 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   brew bundle --global cleanup --force
 fi
 
+# Use Brew-installed bash as default login shell
+if [ "$SHELL" != "/usr/local/bin/bash" ]; then
+  printf "Set default login shell? (Y/N) "
+  read -r response
+  if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+    if ! grep -q /usr/local/bin/bash /etc/shells; then
+      echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+    fi
+
+    chsh -s /usr/local/bin/bash
+  fi
+fi
+
 printf "Configure MacOS defaults? (Y/N) "
 read -r response
 if [ "$response" = "Y" ] || [ "$response" = "y" ]; then

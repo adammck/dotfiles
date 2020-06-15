@@ -15,7 +15,6 @@ brew "ansible"
 brew "autoconf"
 brew "autojump"
 brew "awscli"
-brew "bash"
 brew "boost"
 brew "forego"
 brew "git"
@@ -63,6 +62,8 @@ brew "open-ocd"
 cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
+brew "coreutils"
+brew "bash"
 
 # Set up settings Sync after installing Sublime Text:
 # TODO: Do this before installing Sublime, in bin/provision-mac
