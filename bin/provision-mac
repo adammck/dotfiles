@@ -47,6 +47,7 @@ if [ "$SHELL" != "/usr/local/bin/bash" ]; then
   fi
 fi
 
+
 printf "Configure MacOS defaults? (Y/N) "
 read -r response
 if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
@@ -74,7 +75,14 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
     printf "Restart Finder, to apply defaults? (Y/N) "
     read -r response
     if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
-       killall Finder
+      # TODO: Can we use osascript here?
+      killall Finder
     fi
   fi
+
+  # Quit Music (née iTunes) first
+  osascript -e 'tell application "Music" to quit'
+
+  # Disable notifications when changing track
+  defaults write com.apple.music userWantsPlaybackNotifications -int 0
 fi
