@@ -51,6 +51,7 @@ brew "tmux"
 brew "wget"
 
 # https://github.com/keith/reminders-cli
+# Used by the the `rem` Alfred workflow
 tap "keith/formulae"
 brew "keith/formulae/reminders-cli"
 
@@ -80,6 +81,7 @@ brew "shellcheck"
 brew "youtube-dl"
 brew "coreutils"
 brew "bash"
+cask "autodesk-fusion360"
 
 # Set up settings Sync after installing Sublime Text:
 # TODO: Do this before installing Sublime, in bin/provision-mac
