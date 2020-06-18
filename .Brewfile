@@ -41,10 +41,8 @@ brew "postgresql"
 brew "pstree"
 brew "pth"
 brew "pwgen"
-brew "pyenv"
 brew "reattach-to-user-namespace"
 brew "redis"
-brew "terraform"
 brew "terraform-inventory"
 brew "tidy-html5"
 brew "tmux"
@@ -62,7 +60,6 @@ cask "osxfuse"
 brew "tup"
 brew "open-ocd"
 
-# To build TMK (keyboard firmware)
 tap "osx-cross/avr"
 brew "avr-gcc"
 
@@ -73,6 +70,11 @@ brew "dfu-programmer"
 unless is_datadog_corp
   cask "appgate-sdp-client"
 end
+
+# Tool version managers
+# Don't install the things these manage with brew
+brew "pyenv"
+brew "tfenv"
 
 # Added after May 2020
 cask "1password" unless is_datadog_corp
