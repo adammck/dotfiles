@@ -55,6 +55,10 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   # Quit System Preferences first
   osascript -e 'tell application "System Preferences" to quit'
 
+  # New Finder windows open to home dir
+  defaults write com.apple.finder NewWindowTarget -string "PfHm";
+  defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME";
+
   # Show hidden files in Finder
   defaults write com.apple.finder AppleShowAllFiles TRUE
 
