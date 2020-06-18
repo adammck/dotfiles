@@ -82,6 +82,7 @@ brew "youtube-dl"
 brew "coreutils"
 brew "bash"
 cask "autodesk-fusion360"
+mas "Monodraw", id: 920404675
 
 # Set up settings Sync after installing Sublime Text:
 # TODO: Do this before installing Sublime, in bin/provision-mac
