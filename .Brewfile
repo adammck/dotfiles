@@ -5,7 +5,11 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "homebrew/cask-fonts"
+
+# Allow some packages to be excluded from work machine. Usually because they're
+# already pushed by JAMF, so can't be managed here.
+hostname = `hostname -s`.strip
+is_datadog_corp = %w["COMP-C02CD0VGLVDN"].include?(hostname)
 
 # Dumped from iMac in May 2020.
 # TODO: Organize and remove stuff no longer needed.
@@ -58,7 +62,13 @@ cask "osxfuse"
 brew "tup"
 brew "open-ocd"
 
+# To work (for Datadog) from a non-corp machine:
+unless is_datadog_corp
+  cask "appgate-sdp-client"
+end
+
 # Added after May 2020
+cask "1password" unless is_datadog_corp
 cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
@@ -79,4 +89,5 @@ cask "sublime-text"
 cask "alfred"
 
 # Fonts
+tap "homebrew/cask-fonts"
 cask "font-source-code-pro"
