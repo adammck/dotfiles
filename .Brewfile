@@ -9,7 +9,7 @@ tap "homebrew/core"
 # Allow some packages to be excluded from work machine. Usually because they're
 # already pushed by JAMF, so can't be managed here.
 hostname = `hostname -s`.strip
-is_datadog_corp = %w["COMP-C02CD0VGLVDN"].include?(hostname)
+is_datadog_corp = ["COMP-C02CD0VGLVDN"].include?(hostname)
 
 # Dumped from iMac in May 2020.
 # TODO: Organize and remove stuff no longer needed.
