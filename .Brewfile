@@ -49,7 +49,6 @@ brew "terraform-inventory"
 brew "tidy-html5"
 brew "tmux"
 brew "wget"
-cask "qlstephen"
 
 # https://github.com/keith/reminders-cli
 tap "keith/formulae"
@@ -61,6 +60,13 @@ brew "armmbed/formulae/arm-none-eabi-gcc"
 cask "osxfuse"
 brew "tup"
 brew "open-ocd"
+
+# To build TMK (keyboard firmware)
+tap "osx-cross/avr"
+brew "avr-gcc"
+
+# To flash keyboard
+brew "dfu-programmer"
 
 # To work (for Datadog) from a non-corp machine:
 unless is_datadog_corp
