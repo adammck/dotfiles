@@ -55,6 +55,8 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   # Quit System Preferences first
   osascript -e 'tell application "System Preferences" to quit'
 
+  # ---- finder 
+
   # New Finder windows open to home dir
   defaults write com.apple.finder NewWindowTarget -string "PfHm";
   defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME";
@@ -83,6 +85,15 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
       killall Finder
     fi
   fi
+
+  # ---- ???
+
+  # Show date in clock
+  defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm a"
+
+  # Enable right mouse button
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string "TwoButton"
+  defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
 
   # Quit Music (née iTunes) first
   osascript -e 'tell application "Music" to quit'
