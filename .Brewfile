@@ -76,6 +76,13 @@ end
 brew "pyenv"
 brew "tfenv"
 
+# Build deps at Datadog
+# See: https://github.com/DataDog/devops/wiki/Go#osx-development
+brew "zlib"
+brew "zstd"
+brew "librdkafka"
+brew "lz4"
+
 # Added after May 2020
 cask "1password" unless is_datadog_corp
 cask "1password-cli"
@@ -85,6 +92,11 @@ brew "coreutils"
 brew "bash"
 cask "autodesk-fusion360"
 mas "Monodraw", id: 920404675
+brew "consul"
+cask "slack"
+
+# TODO: Set up config sync.
+cask "visual-studio-code"
 
 # Set up settings Sync after installing Sublime Text:
 # TODO: Do this before installing Sublime, in bin/provision-mac
