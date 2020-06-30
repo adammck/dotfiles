@@ -66,11 +66,6 @@ brew "avr-gcc"
 # To flash keyboard
 brew "dfu-programmer"
 
-# To work (for Datadog) from a non-corp machine:
-unless is_datadog_corp
-  cask "appgate-sdp-client"
-end
-
 # Tool version managers
 # Don't install the things these manage with brew
 brew "pyenv"
