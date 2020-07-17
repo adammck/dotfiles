@@ -79,7 +79,8 @@ brew "librdkafka"
 brew "lz4"
 
 # Added after May 2020
-cask "1password" unless is_datadog_corp
+cask "1password"\
+  unless is_datadog_corp # managed
 cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
@@ -88,7 +89,8 @@ brew "bash"
 cask "autodesk-fusion360"
 mas "Monodraw", id: 920404675
 brew "consul"
-cask "slack"
+cask "slack"\
+  unless is_datadog_corp # managed
 cask "keepingyouawake"
 
 # TODO: Set up config sync.
