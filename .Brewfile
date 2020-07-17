@@ -89,6 +89,7 @@ cask "autodesk-fusion360"
 mas "Monodraw", id: 920404675
 brew "consul"
 cask "slack"
+cask "keepingyouawake"
 
 # TODO: Set up config sync.
 cask "visual-studio-code"
