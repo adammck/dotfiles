@@ -95,6 +95,14 @@ cask "keepingyouawake"
 cask "openemu"
 
 # TODO: Set up config sync.
+# For now, click: Dash > General > Set Up Syncing...
+# The following doesn't seem to work:
+#
+#   defaults write com.kapeli.dashdoc syncFolderPath "~/Library/Mobile Documents/com~apple~CloudDocs/Sync/Dash"
+#
+cask "dash"
+
+# TODO: Set up config sync.
 cask "visual-studio-code"
 
 # Set up settings Sync after installing Sublime Text:
