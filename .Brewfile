@@ -92,6 +92,7 @@ brew "consul"
 cask "slack"\
   unless is_datadog_corp # managed
 cask "keepingyouawake"
+cask "openemu"
 
 # TODO: Set up config sync.
 cask "visual-studio-code"
