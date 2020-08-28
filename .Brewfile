@@ -111,13 +111,7 @@ cask "dash"
 # TODO: Set up config sync.
 cask "visual-studio-code"
 
-# Set up settings Sync after installing Sublime Text:
-# TODO: Do this before installing Sublime, in bin/provision-mac
-#
-#   cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-#   rm -rf User
-#   ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Sync/Sublime\ Text/User
-# 
+# Run bin/provision-mac to set up config sync after install.
 cask "sublime-text"
 
 # Set up settings Sync after installing Alfred!

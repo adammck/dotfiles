@@ -39,6 +39,13 @@ if [ -d "$SYNC_ROOT" ]; then
   read -r response
   if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
 
+    # Sublime Text
+    LOCAL="$HOME"/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+    if [ ! -L "$LOCAL" ]; then
+      trash "$LOCAL" # Okay to fail
+      ln -s "$SYNC_ROOT"/Sublime\ Text/User "$LOCAL"
+    fi
+
     # OpenEmu
     LOCAL="$HOME"/Library/Application\ Support/OpenEmu
     if [ ! -L "$LOCAL" ]; then
