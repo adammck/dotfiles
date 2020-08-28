@@ -32,6 +32,23 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   brew bundle --global install
 fi
 
+# Set up config syncing (via iCloud Drive) for misc apps
+SYNC_ROOT="$HOME"/Library/Mobile\ Documents/com\~apple\~CloudDocs/Sync
+if [ -d "$SYNC_ROOT" ]; then
+  printf "Set up config sync? (Y/N) "
+  read -r response
+  if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+
+    # OpenEmu
+    LOCAL="$HOME"/Library/Application\ Support/OpenEmu
+    if [ ! -L "$LOCAL" ]; then
+      trash "$LOCAL" # Okay to fail
+      ln -s "$SYNC_ROOT"/OpenEmu "$LOCAL"
+    fi
+
+  fi
+fi
+
 # Use Brew-installed bash as default login shell
 if [ "$SHELL" != "/usr/local/bin/bash" ]; then
   printf "Set default login shell? (Y/N) "
