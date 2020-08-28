@@ -24,14 +24,12 @@ if [ ! -d "$HOME"/.dotfiles ]; then
   fi
 fi
 
-# Install my brews, and cleanup unmanaged brews
+# Install my brews
 # These are stored in `~/.Brewfile`, which is a symlink into `.dotfiles`.
-# TODO: Move App Store installs to this thing.
 printf "Run Homebrew? (Y/N) "
 read -r response
 if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   brew bundle --global install
-  brew bundle --global cleanup --force
 fi
 
 # Use Brew-installed bash as default login shell
