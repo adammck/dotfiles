@@ -47,6 +47,7 @@ brew "terraform-inventory"
 brew "tidy-html5"
 brew "tmux"
 brew "wget"
+brew "trash"
 
 # https://github.com/keith/reminders-cli
 # Used by the the `rem` Alfred workflow
@@ -93,6 +94,11 @@ cask "slack"\
   unless is_datadog_corp # managed
 cask "keepingyouawake"
 cask "openemu"
+brew "graphviz"
+mas "Tot", id: 1491071483
+
+# Docker Desktop
+cask "docker"
 
 # TODO: Set up config sync.
 # For now, click: Dash > General > Set Up Syncing...
