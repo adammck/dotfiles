@@ -97,6 +97,9 @@ cask "openemu"
 brew "graphviz"
 mas "Tot", id: 1491071483
 
+# For screenshot sharing at work.
+cask "cloudapp"
+
 # Docker Desktop
 cask "docker"
 
