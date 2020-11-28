@@ -16,12 +16,6 @@ if which pyenv >/dev/null 2>&1; then
   eval "`pyenv init --path`"
 fi
 
-# Set the Go path
-if [ -d "$HOME/code" ]; then
-  export GOPATH="$HOME/code"
-  add_path "$GOPATH/bin"
-fi
-
 # Initialize the Google Cloud SDK
 if [ -d "$HOME/.google/google-cloud-sdk" ]; then
   source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
