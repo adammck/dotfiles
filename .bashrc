@@ -19,8 +19,8 @@ shopt -s dotglob
 
 # Source a file if it exists. Otherwise do nothing.
 try_source () {
-  if [ -f $1 ]; then
-    source $1
+  if [ -f "$1" ]; then
+    source "$1"
   fi
 }
 
@@ -28,7 +28,7 @@ try_source () {
 
 function git_branch {
   ref=$(git symbolic-ref HEAD 2>/dev/null)
-  echo ${ref##refs/heads/}
+  echo "${ref##refs/heads/}"
 }
 
 function git_head {
@@ -36,20 +36,21 @@ function git_head {
 }
 
 function git_token {
-  echo $(git_branch) $(git_head)
+  echo "$(git_branch)" "$(git_head)"
 }
 
 function venv_token {
   if [[ -n "$VIRTUAL_ENV" ]]; then
-    local n=$(basename "$VIRTUAL_ENV")
+    local n
+    n=$(basename "$VIRTUAL_ENV")
 
     # If the virtualenv is in a dir called 'venv', that's not very useful to
     # display, so use the parent directory instead.
     if [[ "$n" == "venv" ]]; then
-      n=$(basename $(dirname "$VIRTUAL_ENV"))
+      n=$(basename "$(dirname "$VIRTUAL_ENV")")
     fi
 
-    echo $n
+    echo "$n"
   fi
 }
 
@@ -94,7 +95,7 @@ function kube_token {
 
 function prompt_tokens {
   for name in "$@"; do
-    text=$($name"_token")
+    text=$("$name""_token")
 
     if [[ -n $text ]]; then
       echo -n "[$name $text] "
@@ -110,17 +111,6 @@ PS1='\n\u@\h $(prompt_tokens git venv aws_okta kube)\n\w$ '
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # ------------------------------------------------------------------------------
-
-# Search DuckDuckGo
-# The query is prefixed with a bang, to avoid having to escape it.
-function ddg {
-  if [ -n "$1" ]; then
-    escaped=$(echo \!$@ | perl -lpe 's/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg')
-    open "https://duckduckgo.com/?q=$escaped"
-  else
-    open "https://duckduckgo.com/bang.html"
-  fi
-}
 
 # define git aliases.
 alias gs='git status'

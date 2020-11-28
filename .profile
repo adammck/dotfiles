@@ -1,5 +1,5 @@
 add_path () {
-  if [ -d $1 ]; then
+  if [ -d "$1" ]; then
     export PATH="$1:$PATH"
   fi
 }
@@ -18,8 +18,8 @@ fi
 
 # Initialize the Google Cloud SDK
 if [ -d "$HOME/.google/google-cloud-sdk" ]; then
-  source "$HOME/.google/google-cloud-sdk/completion.bash.inc"
-  source "$HOME/.google/google-cloud-sdk/path.bash.inc"
+  . "$HOME/.google/google-cloud-sdk/completion.bash.inc"
+  . "$HOME/.google/google-cloud-sdk/path.bash.inc"
 fi
 
 # Add user bins last
