@@ -52,6 +52,11 @@ brew "trash"
 brew "git"
 brew "svn"
 
+# To flash disk images to USB sticks
+# Mostly for installing Linux on things
+# https://balena.io/etcher
+cask "balenaetcher"
+
 # https://github.com/keith/reminders-cli
 # Used by the the `rem` Alfred workflow
 tap "keith/formulae"
@@ -103,17 +108,25 @@ brew "consul"
 cask "slack"\
   unless is_datadog_corp # managed
 cask "keepingyouawake"
-cask "openemu"
 brew "graphviz"
 mas "Tot", id: 1491071483
 cask "scratch"
 mas "Things 3", id: 904280696
+cask "vagrant"
+
+# Like cURL, but for gRPC
+brew "grpcurl"
+
+# Games
+cask "openemu"
+cask "multipatch"
 
 # For screenshot sharing at work.
 cask "cloudapp"
 
 # Docker Desktop
 cask "docker"
+cask "virtualbox"
 
 # TODO: Set up config sync.
 # For now, click: Dash > General > Set Up Syncing...
