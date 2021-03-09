@@ -7,3 +7,5 @@
 	excludesfile = ~/.gitignore
 [credential]
 	helper = osxkeychain
+[init]
+	defaultBranch = master
