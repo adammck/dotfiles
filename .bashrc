@@ -133,7 +133,6 @@ alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
 alias gpr='git pull --rebase origin $(git_branch)'
-alias gb='git checkout -b'
 
 # Define other aliases.
 alias la='ls -lah'

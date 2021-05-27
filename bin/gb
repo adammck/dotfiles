@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+# create and switch to a new git branch prefixed with my username.
+# provide arg to name branch, or no arg to generate a random one.
+
+case $# in
+  "1")
+    # explicit branch name
+    git checkout -b adammck/"$1"
+    ;;
+
+  "0")
+    # recurse with default random branch name
+    $0 "$(random-words 3)"
+    ;;
+
+  *)
+    echo "Usage: $(basename "$0") [branch-name]"
+    exit 1
+    ;;
+esac

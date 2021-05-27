@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+# output some random dictionary words separated by dashes.
+# useful for probably-unique tokens (and NOT for passwords).
+
+case $# in
+  "1")
+    shuf < /usr/share/dict/words | head -n "$1" | paste -sd "-" | tr "[:upper:]" "[:lower:]"
+    ;;
+
+  *)
+    echo "Usage: $(basename "$0") [count]"
+    exit 1
+    ;;
+esac
