@@ -21,7 +21,6 @@ brew "autojump"
 brew "awscli"
 brew "boost"
 brew "forego"
-brew "git"
 brew "go", args: ["cross-compile-common"]
 brew "glide"
 brew "oniguruma"
@@ -48,6 +47,10 @@ brew "tidy-html5"
 brew "tmux"
 brew "wget"
 brew "trash"
+
+# Version control
+brew "git"
+brew "svn"
 
 # https://github.com/keith/reminders-cli
 # Used by the the `rem` Alfred workflow
