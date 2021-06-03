@@ -156,3 +156,8 @@ try_source "$HOME/.bashrc.$(hostname)"
 if [ -s "/usr/local/etc/autojump.sh" ]; then
   . "/usr/local/etc/autojump.sh"
 fi
+
+# Initialize pyenv
+if which pyenv >/dev/null 2>&1; then
+  eval "`pyenv init -`";
+fi
