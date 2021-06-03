@@ -97,6 +97,7 @@ cask "openemu"
 brew "graphviz"
 mas "Tot", id: 1491071483
 cask "scratch"
+mas "Things 3", id: 904280696
 
 # For screenshot sharing at work.
 cask "cloudapp"
