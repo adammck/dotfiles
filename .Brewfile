@@ -82,14 +82,18 @@ brew "zstd"
 brew "librdkafka"
 brew "lz4"
 
+# Modern command-line utils
+# (The bundled versions are ancient)
+brew "coreutils"
+brew "diffutils"
+brew "bash"
+
 # Added after May 2020
 cask "1password"\
   unless is_datadog_corp # managed
 cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
-brew "coreutils"
-brew "bash"
 cask "autodesk-fusion360"
 mas "Monodraw", id: 920404675
 brew "consul"
