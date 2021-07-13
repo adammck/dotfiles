@@ -64,6 +64,7 @@ cask "osxfuse"
 brew "tup"
 brew "open-ocd"
 
+# ???
 tap "osx-cross/avr"
 brew "avr-gcc"
 
@@ -77,10 +78,12 @@ brew "tfenv"
 
 # Build deps at Datadog
 # See: https://github.com/DataDog/devops/wiki/Go#osx-development
-brew "zlib"
-brew "zstd"
-brew "librdkafka"
-brew "lz4"
+if is_datadog_corp
+  brew "zlib"
+  brew "zstd"
+  brew "librdkafka"
+  brew "lz4"
+end
 
 # Modern command-line utils
 # (The bundled versions are ancient)
