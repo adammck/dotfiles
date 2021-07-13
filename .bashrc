@@ -136,6 +136,7 @@ alias gpr='git pull --rebase origin $(git_branch)'
 
 # Define other aliases.
 alias la='ls -lah'
+alias ku='kubectx -u'
 
 # deletes all branches already merged into the current branch.
 function git_cleanup {
