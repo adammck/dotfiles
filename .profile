@@ -16,6 +16,11 @@ if which pyenv >/dev/null 2>&1; then
   eval "`pyenv init --path`"
 fi
 
+# Add GOPATH/bin to PATH, for tools which are installed via go get.
+if which go >/dev/null 2>&1; then
+  export PATH="$PATH:$(go env GOPATH)/bin"
+fi
+
 # Initialize the Google Cloud SDK
 if [ -d "$HOME/.google/google-cloud-sdk" ]; then
   . "$HOME/.google/google-cloud-sdk/completion.bash.inc"
