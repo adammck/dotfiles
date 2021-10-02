@@ -91,9 +91,10 @@ if is_datadog_corp
 end
 
 # Modern command-line utils
-# (The bundled versions are ancient)
+# Mostly prefixed with 'g', e.g. gsha1sum, gtelnet
 brew "coreutils"
 brew "diffutils"
+brew "inetutils"
 brew "bash"
 
 # Added after May 2020
