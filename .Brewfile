@@ -47,6 +47,7 @@ brew "tidy-html5"
 brew "tmux"
 brew "wget"
 brew "trash"
+brew "scc"
 
 # Version control
 brew "git"
