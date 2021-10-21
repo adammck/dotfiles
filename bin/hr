@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e '\033[1;30m'
+echo -e '\033[1;37m'
 
 for i in $(seq $(tput cols)); do
   echo -n "-";
