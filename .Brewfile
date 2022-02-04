@@ -21,7 +21,6 @@ brew "autojump"
 brew "awscli"
 brew "boost"
 brew "forego"
-brew "go", args: ["cross-compile-common"]
 brew "glide"
 brew "oniguruma"
 brew "jq"
@@ -81,6 +80,11 @@ brew "dfu-programmer"
 # Don't install the things these manage with brew
 brew "pyenv"
 brew "tfenv"
+
+# Local Golang development
+brew "go", args: ["cross-compile-common"]
+brew "protoc-gen-go"
+brew "protoc-gen-go-grpc"
 
 # Build deps at Datadog
 # See: https://github.com/DataDog/devops/wiki/Go#osx-development
