@@ -126,6 +126,10 @@ cask "multipatch"
 # For screenshot sharing at work.
 cask "cloudapp"
 
+# Bazel/Starlark formatter
+# https://github.com/bazelbuild/buildtools/tree/master/buildifier#readme
+brew "buildifier"
+
 # Docker Desktop
 cask "docker"
 cask "virtualbox"
