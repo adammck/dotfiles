@@ -80,6 +80,7 @@ brew "dfu-programmer"
 # Don't install the things these manage with brew
 brew "pyenv"
 brew "tfenv"
+brew "bazelisk"
 
 # Local Golang development
 brew "go", args: ["cross-compile-common"]
