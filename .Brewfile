@@ -34,7 +34,7 @@ cask "stand" if is_home
 if is_home
   tap "armmbed/formulae"
   brew "armmbed/formulae/arm-none-eabi-gcc"
-  cask "osxfuse"
+  cask "macfuse"
   brew "tup"
   brew "open-ocd"
 end
