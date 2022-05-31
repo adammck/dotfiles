@@ -104,22 +104,30 @@ brew "inetutils"
 brew "bash"
 
 # Added after May 2020
-cask "1password"\
-  unless is_datadog_corp # managed
-cask "1password-cli"
 brew "shellcheck"
 brew "youtube-dl"
 cask "autodesk-fusion360"
 mas "Monodraw", id: 920404675
 brew "consul"
-cask "slack"\
-  unless is_datadog_corp # managed
 cask "keepingyouawake"
 brew "graphviz"
 mas "Tot", id: 1491071483
 cask "scratch"
 mas "Things 3", id: 904280696
 cask "vagrant"
+
+# Password manager
+cask "1password"\
+  unless is_datadog_corp # managed
+cask "1password-cli"
+
+# Chat
+cask "slack"\
+  unless is_datadog_corp # managed
+
+# Video conferencing
+cask "zoom"\
+  unless is_datadog_corp # managed
 
 # Like cURL, but for gRPC
 brew "grpcurl"
