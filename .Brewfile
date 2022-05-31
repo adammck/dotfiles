@@ -28,7 +28,7 @@ tap "keith/formulae"
 brew "keith/formulae/reminders-cli"
 
 # Remind me to move around once an hour.
-brew "stand" if is_home
+cask "stand" if is_home
 
 # To build ODrive images
 if is_home
@@ -92,6 +92,8 @@ cask "zoom"\
 brew "grpcurl"
 
 # Games
+cask "steam" if is_home
+cask "minecraft" if is_home
 cask "openemu"
 cask "multipatch"
 
