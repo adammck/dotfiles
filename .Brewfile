@@ -6,47 +6,12 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
-# Allow some packages to be excluded from work machine. Usually because they're
-# already pushed by JAMF, so can't be managed here.
+# To include/exclude some packages from some machines. I mostly want all of my
+# machines to work the same, but I work on some weird stuff at home, and at work
+# some stuff is already installed via JAMF or whatever.
 hostname = `hostname -s`.strip
-is_datadog_corp = ["COMP-C02CD0VGLVDN"].include?(hostname)
-
-# Dumped from iMac in May 2020.
-# TODO: Organize and remove stuff no longer needed.
-brew "ack"
-brew "libyaml"
-brew "ansible"
-brew "autoconf"
-brew "autojump"
-brew "awscli"
-brew "boost"
-brew "forego"
-brew "glide"
-brew "oniguruma"
-brew "jq"
-brew "libassuan"
-brew "libusb"
-brew "libgcrypt"
-brew "libksba"
-brew "mercurial"
-brew "minicom"
-brew "mysql"
-brew "optipng"
-brew "packer"
-brew "pandoc"
-brew "picocom"
-brew "postgresql"
-brew "pstree"
-brew "pth"
-brew "pwgen"
-brew "reattach-to-user-namespace"
-brew "redis"
-brew "terraform-inventory"
-brew "tidy-html5"
-brew "tmux"
-brew "wget"
-brew "trash"
-brew "scc"
+is_ddog = (hostname == "COMP-C02CD0VGLVDN")
+is_home = (hostname == "imac5k")
 
 # Version control
 brew "git"
@@ -62,12 +27,17 @@ cask "balenaetcher"
 tap "keith/formulae"
 brew "keith/formulae/reminders-cli"
 
+# Remind me to move around once an hour.
+brew "stand" if is_home
+
 # To build ODrive images
-tap "armmbed/formulae"
-brew "armmbed/formulae/arm-none-eabi-gcc"
-cask "osxfuse"
-brew "tup"
-brew "open-ocd"
+if is_home
+  tap "armmbed/formulae"
+  brew "armmbed/formulae/arm-none-eabi-gcc"
+  cask "osxfuse"
+  brew "tup"
+  brew "open-ocd"
+end
 
 # ???
 tap "osx-cross/avr"
@@ -89,7 +59,7 @@ brew "protoc-gen-go-grpc"
 
 # Build deps at Datadog
 # See: https://github.com/DataDog/devops/wiki/Go#osx-development
-if is_datadog_corp
+if is_ddog
   brew "zlib"
   brew "zstd"
   brew "librdkafka"
@@ -104,30 +74,19 @@ brew "inetutils"
 brew "bash"
 
 # Added after May 2020
-brew "shellcheck"
-brew "youtube-dl"
-cask "autodesk-fusion360"
-mas "Monodraw", id: 920404675
-brew "consul"
-cask "keepingyouawake"
-brew "graphviz"
-mas "Tot", id: 1491071483
-cask "scratch"
-mas "Things 3", id: 904280696
-cask "vagrant"
 
 # Password manager
 cask "1password"\
-  unless is_datadog_corp # managed
+  unless is_ddog # managed
 cask "1password-cli"
 
 # Chat
 cask "slack"\
-  unless is_datadog_corp # managed
+  unless is_ddog # managed
 
 # Video conferencing
 cask "zoom"\
-  unless is_datadog_corp # managed
+  unless is_ddog # managed
 
 # Like cURL, but for gRPC
 brew "grpcurl"
@@ -168,3 +127,51 @@ cask "alfred"
 # Fonts
 tap "homebrew/cask-fonts"
 cask "font-source-code-pro"
+
+# Junk drawer
+# TODO: Organize and remove stuff no longer needed.
+brew "ack"
+brew "ansible"
+brew "autoconf"
+brew "autojump"
+brew "awscli"
+brew "boost"
+brew "consul"
+brew "forego"
+brew "glide"
+brew "graphviz"
+brew "jq"
+brew "libassuan"
+brew "libgcrypt"
+brew "libksba"
+brew "libusb"
+brew "libyaml"
+brew "mercurial"
+brew "minicom"
+brew "mysql"
+brew "oniguruma"
+brew "optipng"
+brew "packer"
+brew "pandoc"
+brew "picocom"
+brew "postgresql"
+brew "pstree"
+brew "pth"
+brew "pwgen"
+brew "reattach-to-user-namespace"
+brew "redis"
+brew "scc"
+brew "shellcheck"
+brew "terraform-inventory"
+brew "tidy-html5"
+brew "tmux"
+brew "trash"
+brew "wget"
+brew "youtube-dl"
+cask "autodesk-fusion360"
+cask "keepingyouawake"
+cask "scratch"
+cask "vagrant"
+mas "Monodraw", id: 920404675
+mas "Things 3", id: 904280696
+mas "Tot", id: 1491071483
