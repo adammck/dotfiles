@@ -97,6 +97,9 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `glyv`
   defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
+  # Disable "optimized storage", so all files in iCloud Drive are downloaded
+  defaults write com.apple.bird optimize-storage 0
+
   # Restart Finder to apply settings
   # TODO: Is this still necessary?
   if [ -t 0  ] || [ -p /dev/stdin ]; then
