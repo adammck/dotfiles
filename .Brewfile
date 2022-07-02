@@ -30,15 +30,6 @@ brew "keith/formulae/reminders-cli"
 # Remind me to move around once an hour.
 cask "stand" if is_home
 
-# To build ODrive images
-if is_home
-  tap "armmbed/formulae"
-  brew "armmbed/formulae/arm-none-eabi-gcc"
-  cask "macfuse"
-  brew "tup"
-  brew "open-ocd"
-end
-
 # ???
 tap "osx-cross/avr"
 brew "avr-gcc"
