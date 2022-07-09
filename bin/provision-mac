@@ -72,6 +72,8 @@ if [ "$SHELL" != "/usr/local/bin/bash" ]; then
   fi
 fi
 
+# For reference, see:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
 printf "Configure MacOS defaults? (Y/N) "
 read -r response
@@ -114,10 +116,20 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
     fi
   fi
 
-  # ---- ???
+  # ---- interface
+
+  # Hide the dock when not in use
+  # (Mostly because my iMac screen has terrible ghosting)
+  defaults write com.apple.dock autohide -int 1
 
   # Show date in clock
   defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm a"
+
+  # ---- input
+
+  # Fast key repeat, short delay
+  defaults write NSGlobalDomain InitialKeyRepeat -int 15
+  defaults write NSGlobalDomain KeyRepeat -int 2
 
   # Enable right mouse button
   defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string "TwoButton"
@@ -128,6 +140,9 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   defaults write "Apple Global Domain" NSAutomaticCapitalizationEnabled 0
   defaults write "Apple Global Domain" NSAutomaticPeriodSubstitutionEnabled 0
   defaults write "Apple Global Domain" NSAutomaticSpellingCorrectionEnabled 0
+
+  # Disable "Show Spotlight search" hotkey. I use Alfred instead.
+  defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/></dict>"
 
   # ---- music
 
