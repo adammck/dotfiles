@@ -53,6 +53,9 @@ if [ -d "$SYNC_ROOT" ]; then
       ln -s "$SYNC_ROOT"/OpenEmu "$LOCAL"
     fi
 
+    # Alfred
+    # (Using config sync feature, not symlink)
+    defaults write com.runningwithcrayons.Alfred-Preferences syncfolder -string "$SYNC_ROOT/Alfred"
   fi
 fi
 
