@@ -26,17 +26,15 @@ try_source () {
 
 # ------------------------------------------------------------------------------
 
-function git_branch {
-  ref=$(git symbolic-ref HEAD 2>/dev/null)
-  echo "${ref##refs/heads/}"
-}
-
-function git_head {
-  git rev-parse --short HEAD 2>/dev/null
-}
-
 function git_token {
-  echo "$(git_branch)" "$(git_head)"
+  git_ref=$(git symbolic-ref HEAD 2>/dev/null)
+  if [ $? -ne 0 ]; then
+    # Probably not in a git repo
+    return
+  fi
+
+  git_head=$(git rev-parse --short HEAD 2>/dev/null)
+  echo "${git_ref##refs/heads/}" "$git_head"
 }
 
 function venv_token {
