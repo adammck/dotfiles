@@ -121,6 +121,9 @@ cask "alfred"
 tap "homebrew/cask-fonts"
 cask "font-source-code-pro"
 
+# Analyze disk usage
+mas "DaisyDisk", id: 411643860
+
 # Junk drawer
 # TODO: Organize and remove stuff no longer needed.
 brew "ack"
