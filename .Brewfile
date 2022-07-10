@@ -13,10 +13,6 @@ hostname = `hostname -s`.strip
 is_ddog = (hostname == "COMP-C02CD0VGLVDN")
 is_home = (hostname == "imac5k")
 
-# Version control
-brew "git"
-brew "svn"
-
 # To flash disk images to USB sticks
 # Mostly for installing Linux on things
 # https://balena.io/etcher
@@ -79,14 +75,47 @@ cask "slack"\
 cask "zoom"\
   unless is_ddog # managed
 
-# Like cURL, but for gRPC
-brew "grpcurl"
-
 # Games
 cask "steam" if is_home
 cask "minecraft" if is_home
 cask "openemu"
 cask "multipatch"
+
+# Like cURL, but for gRPC
+brew "grpcurl"
+
+# Version control
+brew "git"
+brew "svn"
+brew "mercurial"
+
+# Code-centric text search
+brew "ack"
+
+# Random password generator
+# See: .dotfiles/bin/pw
+brew "pwgen"
+
+# ps (process status) output as a tree
+brew "pstree"
+
+# JSON transformer
+brew "jq"
+
+# Terminal emulator
+# For debugging serial devices
+brew "picocom"
+
+# SLOC counter
+brew "scc"
+
+# File downloader
+# Use it to download files; cURL is better for most things.
+brew "wget"
+
+# Download YouTube (and many other sources) videos and audios
+# Use it to archive useful videos for local search and reference
+brew "youtube-dl"
 
 # For screenshot sharing at work.
 cask "cloudapp"
@@ -94,6 +123,9 @@ cask "cloudapp"
 # Bazel/Starlark formatter
 # https://github.com/bazelbuild/buildtools/tree/master/buildifier#readme
 brew "buildifier"
+
+# Shell script linter
+brew "shellcheck"
 
 # Docker Desktop
 cask "docker"
@@ -113,20 +145,31 @@ cask "visual-studio-code"
 # Run bin/provision-mac to set up config sync after install.
 cask "sublime-text"
 
-# Set up settings Sync after installing Alfred!
-# TODO: How to do this from the command prompt?
+# Spotlight replacement: Launcher, search, macros, etc
+# Run bin/provision-mac to set up config sync after install.
+# (Configs are stored in iCloud Drive)
 cask "alfred"
 
-# Fonts
-tap "homebrew/cask-fonts"
-cask "font-source-code-pro"
+# Notepad in the menu bar
+mas "Tot", id: 1491071483
+
+# Task management
+mas "Things 3", id: 904280696
+
+# ASCII art/diagram editor
+mas "Monodraw", id: 920404675
 
 # Analyze disk usage
 mas "DaisyDisk", id: 411643860
 
+# CAD/CAM, for CNC machine
+cask "autodesk-fusion360"
+
+# Menu bar icon to prevent Mac from going to sleep
+cask "keepingyouawake"
+
 # Junk drawer
 # TODO: Organize and remove stuff no longer needed.
-brew "ack"
 brew "ansible"
 brew "autoconf"
 brew "autojump"
@@ -136,38 +179,28 @@ brew "consul"
 brew "forego"
 brew "glide"
 brew "graphviz"
-brew "jq"
 brew "libassuan"
 brew "libgcrypt"
 brew "libksba"
 brew "libusb"
 brew "libyaml"
-brew "mercurial"
 brew "minicom"
 brew "mysql"
 brew "oniguruma"
 brew "optipng"
 brew "packer"
 brew "pandoc"
-brew "picocom"
 brew "postgresql"
-brew "pstree"
 brew "pth"
-brew "pwgen"
 brew "reattach-to-user-namespace"
 brew "redis"
-brew "scc"
-brew "shellcheck"
 brew "terraform-inventory"
 brew "tidy-html5"
 brew "tmux"
 brew "trash"
-brew "wget"
-brew "youtube-dl"
-cask "autodesk-fusion360"
-cask "keepingyouawake"
 cask "scratch"
 cask "vagrant"
-mas "Monodraw", id: 920404675
-mas "Things 3", id: 904280696
-mas "Tot", id: 1491071483
+
+# Fonts
+tap "homebrew/cask-fonts"
+cask "font-source-code-pro"
