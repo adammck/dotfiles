@@ -105,17 +105,6 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
   # Disable "optimized storage", so all files in iCloud Drive are downloaded
   defaults write com.apple.bird optimize-storage 0
 
-  # Restart Finder to apply settings
-  # TODO: Is this still necessary?
-  if [ -t 0  ] || [ -p /dev/stdin ]; then
-    printf "Restart Finder, to apply defaults? (Y/N) "
-    read -r response
-    if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
-      # TODO: Can we use osascript here?
-      killall Finder
-    fi
-  fi
-
   # ---- interface
 
   # Hide the dock when not in use
@@ -151,4 +140,15 @@ if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
 
   # Disable notifications when changing track
   defaults write com.apple.music userWantsPlaybackNotifications -int 0
+
+  # Restart Finder and Dock to apply some of the interface settings.
+  if [ -t 0  ] || [ -p /dev/stdin ]; then
+    printf "Restart Finder and Dock, to apply settings? (Y/N) "
+    read -r response
+    if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+      # TODO: Can we use osascript here?
+      killall Finder
+      killall Dock
+    fi
+  fi
 fi
