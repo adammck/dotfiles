@@ -172,6 +172,9 @@ cask "keepingyouawake"
 cask "google-chrome"\
   unless is_ddog # managed
 
+# Image editor
+mas "Pixelmator Pro", id: 1289583905
+
 # Junk drawer
 # TODO: Organize and remove stuff no longer needed.
 brew "ansible"
