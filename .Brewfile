@@ -168,6 +168,10 @@ cask "autodesk-fusion360"
 # Menu bar icon to prevent Mac from going to sleep
 cask "keepingyouawake"
 
+# Web browser for development
+cask "google-chrome"\
+  unless is_ddog # managed
+
 # Junk drawer
 # TODO: Organize and remove stuff no longer needed.
 brew "ansible"
