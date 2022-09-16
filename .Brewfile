@@ -10,7 +10,7 @@ tap "homebrew/core"
 # machines to work the same, but I work on some weird stuff at home, and at work
 # some stuff is already installed via JAMF or whatever.
 hostname = `hostname -s`.strip
-is_ddog = (hostname == "COMP-C02CD0VGLVDN")
+is_work = (hostname == "st-adammck1")
 is_home = (hostname == "imac5k")
 
 # To flash disk images to USB sticks
@@ -44,15 +44,6 @@ brew "go", args: ["cross-compile-common"]
 brew "protoc-gen-go"
 brew "protoc-gen-go-grpc"
 
-# Build deps at Datadog
-# See: https://github.com/DataDog/devops/wiki/Go#osx-development
-if is_ddog
-  brew "zlib"
-  brew "zstd"
-  brew "librdkafka"
-  brew "lz4"
-end
-
 # Modern command-line utils
 # Mostly prefixed with 'g', e.g. gsha1sum, gtelnet
 brew "coreutils"
@@ -67,16 +58,16 @@ brew "cpanm"
 
 # Password manager
 cask "1password"\
-  unless is_ddog # managed
+  unless is_work # managed
 cask "1password-cli"
 
 # Chat
 cask "slack"\
-  unless is_ddog # managed
+  unless is_work # managed
 
 # Video conferencing
 cask "zoom"\
-  unless is_ddog # managed
+  unless is_work # managed
 
 # Games
 cask "steam" if is_home
