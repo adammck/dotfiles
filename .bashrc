@@ -52,45 +52,6 @@ function venv_token {
   fi
 }
 
-function aws_okta_token {
-  if [[ -n "$AWS_OKTA_PROFILE" ]]; then
-    echo -ne "\033[41m" # bg=red
-    echo -ne "\033[97m" # fg=white
-    echo -n "$AWS_OKTA_PROFILE"
-    echo -ne "\033[0m" # reset
-  fi
-}
-
-# todo: this is very slow, make it faster
-function kube_token {
-  # file is not cleared when no active context :'(
-  #local ctx=$(cat $HOME/.kube/kubectx 2>/dev/null)
-  local ctx=$(kubectx -c 2>/dev/null | tr -d '\n')
-
-  # no token if no active context
-  # (use `kubectx -u` to unset context)
-  if [[ -z $ctx ]]; then
-    return
-  fi
-
-  # white-on-red for prod clusters, otherwise normal
-  if [[ "$ctx" == *"prod.dog" ]]; then
-    echo -ne "\033[41m" # bg=red
-    echo -ne "\033[97m" # fg=white
-  fi
-
-  echo -n $ctx
-
-  if [[ "$ctx" == *"prod.dog" ]]; then
-    echo -ne "\033[0m" # reset
-  fi
-
-  echo -n " "
-
-  #cat $HOME/.kube/kubens/$ctx 2>/dev/null
-  kubens -c 2>/dev/null | tr -d '\n'
-}
-
 function prompt_tokens {
   for name in "$@"; do
     text=$("$name""_token")
@@ -103,7 +64,7 @@ function prompt_tokens {
 
 # adammck@bender (git:master) (rvm:1.9.2@gemset)
 # ~/projects/whatever$
-PS1='\n\u@\h $(prompt_tokens git venv aws_okta kube)\n\w$ '
+PS1='\n\u@\h $(prompt_tokens git venv)\n\w$ '
 
 # disable the virtualenv prompt prefix, since my $PS1 (above) provides it.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -133,7 +94,7 @@ function git_cleanup {
 # colorize ls output
 export CLICOLOR=1
 
-# Disable the idiotic Homebrew beer mug
+# Disable the Homebrew beer mug
 export HOMEBREW_NO_EMOJI=1
 
 # include host-specific config (if available) for aliases and hacks.
