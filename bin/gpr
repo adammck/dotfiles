@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+ref=$(git symbolic-ref HEAD 2>/dev/null)
+bra="${ref##refs/heads/}"
+
+set -x
+git pull --rebase origin "$bra"

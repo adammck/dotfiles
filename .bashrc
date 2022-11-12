@@ -120,7 +120,6 @@ alias gc='git commit -v'
 alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
-alias gpr='git pull --rebase origin $(git_branch)'
 
 # Define other aliases.
 alias la='ls -lah'
