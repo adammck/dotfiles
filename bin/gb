@@ -1,13 +1,34 @@
 #!/bin/bash
 set -euo pipefail
 
-# create and switch to a new git branch prefixed with my username.
+#
+# create and switch to a new git branch.
 # provide arg to name branch, or no arg to generate a random one.
+#
+# if invoked in a git repo for which the remote origin is *not* a github repo
+# with the same account name as the current username (i.e. $USER), prefix the
+# branch name with the username. (this seems to be a common convention in big
+# monorepos.)
+#
+
+function gitOrigin {
+  git remote get-url origin 2>/dev/null || echo ""
+}
+
+function isMyRepo {
+  gitOrigin | grep -q ^git@github.com:"$USER"/
+}
+
+function branchPrefix {
+  if ! isMyRepo; then
+    echo "$USER/"
+  fi
+}
 
 case $# in
   "1")
     # explicit branch name
-    git checkout -b adammck/"$1"
+    git checkout -b "$(branchPrefix)""$1"
     ;;
 
   "0")
