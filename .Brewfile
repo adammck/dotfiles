@@ -60,6 +60,9 @@ brew "diffutils"
 brew "inetutils"
 brew "bash"
 
+# Perl package manager
+brew "cpanm"
+
 # Added after May 2020
 
 # Password manager

@@ -21,6 +21,13 @@ if which go >/dev/null 2>&1; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
+# Set up the perl5 bin, if this machine has one. The package manager (cpanm)
+# seems to want to install things here, which the system perl can't find.
+if [ -d "$HOME/perl5" ]; then
+  export PERL5LIB=$HOME/perl5/lib/perl5
+  export PATH="$PATH:$HOME/perl5/bin"
+fi
+
 # Initialize the Google Cloud SDK
 if [ -d "$HOME/.google/google-cloud-sdk" ]; then
   . "$HOME/.google/google-cloud-sdk/completion.bash.inc"
