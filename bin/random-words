@@ -6,7 +6,7 @@ set -euo pipefail
 
 case $# in
   "1")
-    shuf < /usr/share/dict/words | head -n "$1" | paste -sd "-" | tr "[:upper:]" "[:lower:]"
+    shuf < /usr/share/dict/words | head -n "$1" | paste -sd\- - | tr "[:upper:]" "[:lower:]"
     ;;
 
   *)
