@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# For reference, see:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+
+# Quit System Preferences first
+osascript -e 'tell application "System Preferences" to quit'
+
+# ---- finder 
+
+# New Finder windows open to home dir
+defaults write com.apple.finder NewWindowTarget -string "PfHm";
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME";
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
+
+# Use column view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `glyv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Disable "optimized storage", so all files in iCloud Drive are downloaded
+defaults write com.apple.bird optimize-storage 0
+
+# ---- interface
+
+# Hide the dock when not in use
+# (Mostly because my iMac screen has terrible ghosting)
+defaults write com.apple.dock autohide -int 1
+
+# Show date in clock
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm a"
+
+# ---- input
+
+# Fast key repeat, short delay
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Enable right mouse button
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string "TwoButton"
+defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
+
+# Disable auto-correct stuff from Prefs -> Keyboard -> Text
+defaults write "Apple Global Domain" WebAutomaticSpellingCorrectionEnabled 0
+defaults write "Apple Global Domain" NSAutomaticCapitalizationEnabled 0
+defaults write "Apple Global Domain" NSAutomaticPeriodSubstitutionEnabled 0
+defaults write "Apple Global Domain" NSAutomaticSpellingCorrectionEnabled 0
+
+# Disable "Show Spotlight search" hotkey. I use Alfred instead.
+# TODO(adammck): This didn't seem to work at the new workplace.
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/></dict>"
+
+# ---- music
+
+# Quit Music (née iTunes) first
+osascript -e 'tell application "Music" to quit'
+
+# Disable notifications when changing track
+defaults write com.apple.music userWantsPlaybackNotifications -int 0
+
+# Restart Finder and Dock to apply some of the interface settings.
+if [ -t 0  ] || [ -p /dev/stdin ]; then
+  printf "Restart Finder and Dock, to apply settings? (Y/N) "
+  read -r response
+  if [ "$response" = "Y" ] || [ "$response" = "y" ]; then
+    # TODO: Can we use osascript here?
+    killall Finder
+    killall Dock
+  fi
+fi
