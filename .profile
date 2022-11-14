@@ -5,15 +5,17 @@ add_path () {
 }
 
 # Initialize rbenv
-if which rbenv >/dev/null 2>&1; then
-  eval "`rbenv init -`";
+if [ -z "${RBENV_SHELL++}" ]; then
+  if which rbenv >/dev/null 2>&1; then
+    eval "`rbenv init -`";
+  fi
 fi
 
 # Initialize pyenv
-if which pyenv >/dev/null 2>&1; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "`pyenv init --path`"
+if [ -z "${PYENV_SHELL++}" ]; then
+  if which pyenv >/dev/null 2>&1; then
+    eval "`pyenv init -`";
+  fi
 fi
 
 # Add GOPATH/bin to PATH, for tools which are installed via go get.
