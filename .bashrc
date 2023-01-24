@@ -81,6 +81,7 @@ alias gc='git commit -v'
 alias gca='ga :/ && gc'
 alias gl='git log --color -p'
 alias gm='git merge --no-commit --no-ff'
+alias gr='cd ./$(git rev-parse --show-cdup)'
 
 # Define other aliases.
 alias la='ls -lah'
@@ -104,4 +105,9 @@ try_source "$HOME/.bashrc.$(hostname)"
 # rather than in .profile, because it isn't inherited by nested shells.
 if [ -s "/usr/local/etc/autojump.sh" ]; then
   . "/usr/local/etc/autojump.sh"
+fi
+
+# Same for M1.
+if [ -f /opt/homebrew/etc/profile.d/autojump.sh ]; then
+  . /opt/homebrew/etc/profile.d/autojump.sh
 fi
