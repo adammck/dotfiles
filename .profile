@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 add_path () {
   if [ -d "$1" ]; then
     export PATH="$1:$PATH"

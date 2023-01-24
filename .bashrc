@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 # abort unless running interactively.
 [[ $- != *i* ]] && return
 
