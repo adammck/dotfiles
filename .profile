@@ -9,14 +9,14 @@ add_path () {
 # Initialize rbenv
 if [ -z "${RBENV_SHELL++}" ]; then
   if which rbenv >/dev/null 2>&1; then
-    eval "`rbenv init -`";
+    eval "$(rbenv init -)";
   fi
 fi
 
 # Initialize pyenv
 if [ -z "${PYENV_SHELL++}" ]; then
   if which pyenv >/dev/null 2>&1; then
-    eval "`pyenv init -`";
+    eval "$(pyenv init -)";
   fi
 fi
 
