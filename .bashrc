@@ -113,3 +113,7 @@ fi
 if [ -f /opt/homebrew/etc/profile.d/autojump.sh ]; then
   . /opt/homebrew/etc/profile.d/autojump.sh
 fi
+
+# Enable git autocomplete.
+# See: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+source ~/.git-completion.bash
