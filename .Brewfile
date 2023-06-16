@@ -165,8 +165,9 @@ mas "Monodraw", id: 920404675
 # Analyze disk usage
 mas "DaisyDisk", id: 411643860
 
-# CAD/CAM, for CNC machine
+# CAD/CAM, for CNC machine and 3d printer
 cask "autodesk-fusion360"
+cask "prusaslicer"
 
 # Menu bar icon to prevent Mac from going to sleep
 cask "keepingyouawake"
