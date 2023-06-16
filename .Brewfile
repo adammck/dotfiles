@@ -125,6 +125,15 @@ brew "shellcheck"
 cask "docker"
 cask "virtualbox"
 
+# kubectl, kubectx, kubens
+brew "kubernetes-cli"
+brew "kubectx"
+brew "helm"
+
+# Local Kubernetes cluster for development.
+# (Don't use the one bundled with Docker Desktop.)
+brew "minikube"
+
 # TODO: Set up config sync.
 # For now, click: Dash > General > Set Up Syncing...
 # The following doesn't seem to work:
