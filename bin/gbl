@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+#
+# Print the git log between HEAD and master, including the commit that was the
+# common ancestor. This is useful to see all of the commits on the branch, for
+# rebasing and the such, but without including all the stuff that has happened
+# on master since the branch was created.
+#
+
+branch="master"
+
+function getBoundaryCommitRev {
+  git rev-list --boundary HEAD..."$branch" | grep "^-" | cut -c2- | head -n 1 || echo ""
+}
+
+rev=$(getBoundaryCommitRev)
+if [ -z "$rev" ]; then
+    echo "Error: No commits since $branch. Not on a branch?"
+    exit 1
+fi
+
+git log HEAD..."$rev"^
