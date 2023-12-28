@@ -153,6 +153,9 @@ cask "sublime-text"
 # (Configs are stored in iCloud Drive)
 cask "alfred"
 
+# Move and resize windows using keyboard shortcuts or snap areas.
+cask "rectangle"
+
 # Notepad in the menu bar
 mas "Tot", id: 1491071483
 
