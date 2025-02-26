@@ -44,9 +44,9 @@ function venv_token {
     local n
     n=$(basename "$VIRTUAL_ENV")
 
-    # If the virtualenv is in a dir called 'venv', that's not very useful to
-    # display, so use the parent directory instead.
-    if [[ "$n" == "venv" ]]; then
+    # If the virtualenv is in a dir called venv or .venv, that's not very useful
+    # to display, so use the parent directory instead.
+    if [[ "$n" == "venv" || "$n" == ".venv" ]]; then
       n=$(basename "$(dirname "$VIRTUAL_ENV")")
     fi
 
