@@ -88,6 +88,8 @@ alias gr='cd ./$(git rev-parse --show-cdup)'
 # Define other aliases.
 alias la='ls -lah'
 alias ku='kubectx -u'
+# https://github.com/adammck/git-branch-selector
+alias gbs='git-branch-selector'
 
 # deletes all branches already merged into the current branch.
 function git_cleanup {
