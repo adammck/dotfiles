@@ -111,6 +111,9 @@ if [ -s "/usr/local/etc/autojump.sh" ]; then
   . "/usr/local/etc/autojump.sh"
 fi
 
+# Initialize completions for asdf
+source <(asdf completion bash)
+
 # Same for M1.
 if [ -f /opt/homebrew/etc/profile.d/autojump.sh ]; then
   . /opt/homebrew/etc/profile.d/autojump.sh

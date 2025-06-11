@@ -6,6 +6,9 @@ add_path () {
   fi
 }
 
+# Initialize asdf (replaces pyenv, rbenv, etc)
+add_path "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+
 # Initialize rbenv
 if [ -z "${RBENV_SHELL++}" ]; then
   if which rbenv >/dev/null 2>&1; then
